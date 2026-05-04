@@ -646,18 +646,6 @@ footer{padding:80px 24px 32px;border-top:1px solid var(--line);margin-top:80px}
 .foot-tag{color:var(--ink-3);font-size:14px;max-width:480px;margin:0 auto}
 .foot-bottom{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-size:12px;color:var(--ink-4);letter-spacing:.05em}
 
-/* AB AUDIO (antes/depois) */
-.ab-audio{padding:120px 24px;position:relative}
-.ab-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:980px;margin:48px auto 0}
-.ab-card{padding:32px 28px;display:flex;flex-direction:column;gap:18px;text-align:center}
-.ab-card .ab-label{font-size:11px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:var(--ink-3)}
-.ab-card.pro .ab-label{color:var(--violet-2)}
-.ab-card .ab-title{font-size:18px;font-weight:600;color:var(--ink-2)}
-.ab-card.pro .ab-title{background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.ab-card audio{width:100%;margin-top:6px;filter:invert(.9) hue-rotate(180deg) saturate(1.2)}
-.ab-card .ab-desc{font-size:13px;color:var(--ink-4);line-height:1.6}
-.ab-note{text-align:center;margin-top:32px;font-size:13px;color:var(--ink-4);font-style:italic}
-
 /* PRA QUEM É / PRA QUEM NÃO É */
 .fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1080px;margin:48px auto 0}
 .fit-card{padding:36px 32px;display:flex;flex-direction:column;gap:16px}
@@ -708,7 +696,7 @@ footer{padding:80px 24px 32px;border-top:1px solid var(--line);margin-top:80px}
 
 /* RESPONSIVE */
 @media(max-width:980px){
-  .ab-grid,.fit-grid{grid-template-columns:1fr}
+  .fit-grid{grid-template-columns:1fr}
   nav{padding:14px 20px}
   nav.scrolled{padding:12px 20px}
   nav ul li:not(:last-child){display:none}
@@ -863,45 +851,6 @@ footer{padding:80px 24px 32px;border-top:1px solid var(--line);margin-top:80px}
         </g>
       </svg>
     </div>
-  </div>
-</section>
-
-<!-- ANTES / DEPOIS (AUDIO) -->
-<section class="ab-audio" id="antes-depois">
-  <div class="wrap">
-    <div class="head">
-      <span class="eyebrow">
-        <svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v12M3 5v6M13 5v6M5 7v2M11 7v2"/></svg>
-        Prova de método
-      </span>
-      <h2>Ouça a diferença que o <span class="grad">método</span> faz.</h2>
-      <span class="t-underline"></span>
-      <p class="sub">Mesma música, mesma captação. Antes e depois do processo aplicado pelo Lisciel no ForestLab.</p>
-    </div>
-
-    <!-- TODO: substituir os arquivos abaixo pelos áudios reais (audio/antes-1.mp3, audio/depois-1.mp3 etc) -->
-    <div class="ab-grid">
-      <div class="glass ab-card">
-        <div class="ab-label">Antes</div>
-        <div class="ab-title">Mix bruto / amador</div>
-        <audio controls preload="metadata">
-          <source src="audio/antes-1.mp3" type="audio/mpeg">
-          Seu navegador não suporta áudio.
-        </audio>
-        <div class="ab-desc">Caixa abafada, bumbo sem peso, vocal flutuando — som "demo" que não fecha trabalho.</div>
-      </div>
-      <div class="glass ab-card pro">
-        <div class="ab-label">Depois</div>
-        <div class="ab-title">Mix com o método</div>
-        <audio controls preload="metadata">
-          <source src="audio/depois-1.mp3" type="audio/mpeg">
-          Seu navegador não suporta áudio.
-        </audio>
-        <div class="ab-desc">Cadeia de mixagem aplicada, dinâmica controlada, ambiência analógica — pronto pra entregar.</div>
-      </div>
-    </div>
-
-    <p class="ab-note">Use fones de ouvido para perceber a diferença real.</p>
   </div>
 </section>
 
@@ -1287,6 +1236,61 @@ footer{padding:80px 24px 32px;border-top:1px solid var(--line);margin-top:80px}
           </div>
         </div>
       </div>
+      <div class="glass t-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Trabalho com áudio há 12 anos e o módulo de mixagem por instrumentos me trouxe coisas que nunca tinham sido apresentadas dessa forma. Vale cada centavo."</blockquote>
+        <div class="who">
+          <div class="av">L</div>
+          <div>
+            <div class="name">Lucas Almeida</div>
+            <div class="role">Engenheiro de gravação · Salvador/BA</div>
+          </div>
+        </div>
+      </div>
+      <div class="glass t-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Sou amador, mexo com gravação no quarto. O Lisciel desmistificou compressor, gate e side chain como ninguém tinha conseguido até hoje. Recomendo demais."</blockquote>
+        <div class="who">
+          <div class="av">F</div>
+          <div>
+            <div class="name">Felipe Costa</div>
+            <div class="role">Músico amador · Goiânia/GO</div>
+          </div>
+        </div>
+      </div>
+      <div class="glass t-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Já estudei mixagem em outros canais e plataformas. A profundidade aqui é absurda — e o cara realmente sabe do que tá falando. Tem mão de estúdio de verdade."</blockquote>
+        <div class="who">
+          <div class="av">B</div>
+          <div>
+            <div class="name">Bruno Tavares</div>
+            <div class="role">Tecladista e produtor · Florianópolis/SC</div>
+          </div>
+        </div>
+      </div>
+      <div class="glass t-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Comecei o curso já trabalhando com áudio profissionalmente. Achei que ia ser revisão e foi outro patamar. Mudou minha relação com a mesa de som."</blockquote>
+        <div class="who">
+          <div class="av">T</div>
+          <div>
+            <div class="name">Thiago Ribeiro</div>
+            <div class="role">Operador de PA e mixador · Brasília/DF</div>
+          </div>
+        </div>
+      </div>
+      <div class="glass t-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"O melhor de tudo é a abordagem direta — sem teoria gratuita, sem enrolação. O cara mostra a tela, mostra o som e fala o porquê. Conteúdo pra estudar e voltar várias vezes."</blockquote>
+        <div class="who">
+          <div class="av">G</div>
+          <div>
+            <div class="name">Gustavo Lima</div>
+            <div class="role">Mixador de podcast e música · Fortaleza/CE</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1465,7 +1469,7 @@ window.addEventListener('scroll', () => {
 // COUNTDOWN — data fixa de fim da oferta. Ajustar conforme campanha.
 // Formato ISO 8601 com timezone -03:00 (BRT). Exemplo: '2026-05-11T23:59:59-03:00'.
 (() => {
-  const OFFER_END_ISO = '2026-05-11T23:59:59-03:00';
+  const OFFER_END_ISO = '2026-05-09T23:59:59-03:00';
   const end = new Date(OFFER_END_ISO).getTime();
   const pad = n => String(Math.max(0, n)).padStart(2, '0');
   function tick(){
