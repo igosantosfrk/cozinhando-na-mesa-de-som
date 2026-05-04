@@ -5,7 +5,33 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <meta name="referrer" content="unsafe-url"/>
 <title>Cozinhando na Mesa de Som | ForestLab</title>
-<meta name="description" content="Pare de adivinhar e comece a aplicar as técnicas reais usadas nos grandes estúdios. Aprenda gravação, mixagem e masterização do zero ao avançado."/>
+<meta name="description" content="Aprenda gravação, mixagem e masterização com Lisciel Franco, do ForestLab — um dos maiores estúdios 100% analógicos do Brasil. Método de 30 anos de estúdio, 6 módulos digitais."/>
+
+<!-- TODO: Substituir os IDs abaixo pelos reais antes de divulgar a página -->
+<!-- META PIXEL -->
+<!--
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', 'SEU_PIXEL_ID');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=SEU_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+-->
+<!-- GOOGLE ANALYTICS -->
+<!--
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SEU_GA_ID"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-SEU_GA_ID');
+</script>
+-->
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -620,8 +646,69 @@ footer{padding:80px 24px 32px;border-top:1px solid var(--line);margin-top:80px}
 .foot-tag{color:var(--ink-3);font-size:14px;max-width:480px;margin:0 auto}
 .foot-bottom{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-size:12px;color:var(--ink-4);letter-spacing:.05em}
 
+/* AB AUDIO (antes/depois) */
+.ab-audio{padding:120px 24px;position:relative}
+.ab-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:980px;margin:48px auto 0}
+.ab-card{padding:32px 28px;display:flex;flex-direction:column;gap:18px;text-align:center}
+.ab-card .ab-label{font-size:11px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:var(--ink-3)}
+.ab-card.pro .ab-label{color:var(--violet-2)}
+.ab-card .ab-title{font-size:18px;font-weight:600;color:var(--ink-2)}
+.ab-card.pro .ab-title{background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.ab-card audio{width:100%;margin-top:6px;filter:invert(.9) hue-rotate(180deg) saturate(1.2)}
+.ab-card .ab-desc{font-size:13px;color:var(--ink-4);line-height:1.6}
+.ab-note{text-align:center;margin-top:32px;font-size:13px;color:var(--ink-4);font-style:italic}
+
+/* PRA QUEM É / PRA QUEM NÃO É */
+.fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1080px;margin:48px auto 0}
+.fit-card{padding:36px 32px;display:flex;flex-direction:column;gap:16px}
+.fit-card h3{font-size:20px;font-weight:600;display:flex;align-items:center;gap:10px}
+.fit-card h3 .ico-c{
+  width:28px;height:28px;border-radius:50%;display:grid;place-items:center;flex-shrink:0;
+  font-size:14px;font-weight:700;
+}
+.fit-card.yes h3 .ico-c{background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;box-shadow:0 6px 18px rgba(34,197,94,.35)}
+.fit-card.no h3 .ico-c{background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--ink-3)}
+.fit-card ul{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:6px}
+.fit-card li{padding-left:26px;position:relative;font-size:14px;color:var(--ink-2);line-height:1.6}
+.fit-card.yes li::before{
+  content:'✓';position:absolute;left:0;top:0;color:#22c55e;font-weight:700;font-size:16px;
+}
+.fit-card.no li{color:var(--ink-3)}
+.fit-card.no li::before{
+  content:'×';position:absolute;left:2px;top:-1px;color:var(--ink-4);font-weight:700;font-size:18px;
+}
+
+/* MOD PROMISE */
+.mod-promise{
+  font-size:14px;color:var(--violet-2);font-weight:500;
+  margin:0 0 16px 0;line-height:1.5;
+  padding:10px 14px;border-radius:8px;
+  background:linear-gradient(180deg,rgba(168,131,255,.08),rgba(168,131,255,.02));
+  border-left:3px solid var(--violet);
+}
+.mod-promise strong{color:var(--ink);font-weight:600}
+
+/* GUARANTEE BOX */
+.guarantee{
+  max-width:520px;margin:32px auto 0;
+  padding:24px 28px;border-radius:14px;
+  background:linear-gradient(135deg,rgba(34,197,94,.08),rgba(34,197,94,.02));
+  border:1px solid rgba(34,197,94,.25);
+  display:flex;align-items:center;gap:18px;text-align:left;
+}
+.guarantee .seal{
+  width:64px;height:64px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;
+  display:grid;place-items:center;font-weight:700;font-size:11px;letter-spacing:.05em;text-align:center;line-height:1.1;
+  box-shadow:0 8px 24px rgba(34,197,94,.4),inset 0 1px 0 rgba(255,255,255,.3);
+}
+.guarantee .seal small{display:block;font-size:18px;font-weight:800;letter-spacing:0;margin-top:1px}
+.guarantee .gtxt{font-size:13px;color:var(--ink-2);line-height:1.55}
+.guarantee .gtxt strong{color:#86efac;font-weight:700}
+
 /* RESPONSIVE */
 @media(max-width:980px){
+  .ab-grid,.fit-grid{grid-template-columns:1fr}
   nav{padding:14px 20px}
   nav.scrolled{padding:12px 20px}
   nav ul li:not(:last-child){display:none}
@@ -654,7 +741,7 @@ footer{padding:80px 24px 32px;border-top:1px solid var(--line);margin-top:80px}
   <span class="urg-timer" aria-label="Tempo restante">
     <span data-cd="d">02</span>:<span data-cd="h">14</span>:<span data-cd="m">37</span>:<span data-cd="s">29</span>
   </span>
-  <a href="https://go.perfectpay.com.br/PPU38CQ7GAE" target="_blank" rel="noopener" style="color:#fff;text-decoration:underline;font-weight:700">Garantir desconto →</a>
+  <a href="https://go.perfectpay.com.br/PPU38CQ7GAE" target="_blank" rel="noopener" style="color:#fff;text-decoration:underline;font-weight:700">Garantir 50% OFF →</a>
 </div>
 
 <!-- NAV -->
@@ -684,11 +771,11 @@ footer{padding:80px 24px 32px;border-top:1px solid var(--line);margin-top:80px}
     Curso · Cozinhando na Mesa de Som
   </span>
   <h1>
-    Domine a engenharia de áudio<br>
-    e <span class="grad">mixe como um profissional.</span>
+    Pare de mixar de "ouvido" e aprenda<br>
+    o <span class="grad">método analógico</span> de quem está há 30 anos atrás da mesa.
   </h1>
   <p class="sub">
-    Pare de adivinhar e comece a aplicar as <strong>técnicas reais</strong> usadas nos grandes estúdios. Aprenda gravação, mixagem e masterização do zero ao avançado.
+    Gravação, mixagem e masterização com <strong>Lisciel Franco</strong>, do <strong>ForestLab</strong> — um dos maiores estúdios 100% analógicos do Brasil. Sem teoria gratuita, sem o "pluginzinho da moda". Só o que funciona em produção real.
   </p>
 
   <div class="vsl">
@@ -718,7 +805,7 @@ footer{padding:80px 24px 32px;border-top:1px solid var(--line);margin-top:80px}
   </div>
 
   <div class="cta-wrap">
-    <a href="https://go.perfectpay.com.br/PPU38CQ7GAE" target="_blank" rel="noopener" class="btn-green">Quero garantir minha vaga com 50% OFF</a>
+    <a href="https://go.perfectpay.com.br/PPU38CQ7GAE" target="_blank" rel="noopener" class="btn-green">Garantir 50% OFF</a>
     <p style="margin-top:14px;font-size:12px;color:#fca5a5;letter-spacing:.04em"><strong style="color:#f87171">●</strong> Restam poucas vagas — oferta encerra em breve</p>
   </div>
   <div class="stats">
@@ -776,6 +863,45 @@ footer{padding:80px 24px 32px;border-top:1px solid var(--line);margin-top:80px}
         </g>
       </svg>
     </div>
+  </div>
+</section>
+
+<!-- ANTES / DEPOIS (AUDIO) -->
+<section class="ab-audio" id="antes-depois">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">
+        <svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v12M3 5v6M13 5v6M5 7v2M11 7v2"/></svg>
+        Prova de método
+      </span>
+      <h2>Ouça a diferença que o <span class="grad">método</span> faz.</h2>
+      <span class="t-underline"></span>
+      <p class="sub">Mesma música, mesma captação. Antes e depois do processo aplicado pelo Lisciel no ForestLab.</p>
+    </div>
+
+    <!-- TODO: substituir os arquivos abaixo pelos áudios reais (audio/antes-1.mp3, audio/depois-1.mp3 etc) -->
+    <div class="ab-grid">
+      <div class="glass ab-card">
+        <div class="ab-label">Antes</div>
+        <div class="ab-title">Mix bruto / amador</div>
+        <audio controls preload="metadata">
+          <source src="audio/antes-1.mp3" type="audio/mpeg">
+          Seu navegador não suporta áudio.
+        </audio>
+        <div class="ab-desc">Caixa abafada, bumbo sem peso, vocal flutuando — som "demo" que não fecha trabalho.</div>
+      </div>
+      <div class="glass ab-card pro">
+        <div class="ab-label">Depois</div>
+        <div class="ab-title">Mix com o método</div>
+        <audio controls preload="metadata">
+          <source src="audio/depois-1.mp3" type="audio/mpeg">
+          Seu navegador não suporta áudio.
+        </audio>
+        <div class="ab-desc">Cadeia de mixagem aplicada, dinâmica controlada, ambiência analógica — pronto pra entregar.</div>
+      </div>
+    </div>
+
+    <p class="ab-note">Use fones de ouvido para perceber a diferença real.</p>
   </div>
 </section>
 
@@ -844,7 +970,45 @@ footer{padding:80px 24px 32px;border-top:1px solid var(--line);margin-top:80px}
     </div>
 
     <div style="text-align:center;margin-top:48px">
-      <a href="https://go.perfectpay.com.br/PPU38CQ7GAE" target="_blank" rel="noopener" class="btn-green">Quero mixar como profissional</a>
+      <a href="https://go.perfectpay.com.br/PPU38CQ7GAE" target="_blank" rel="noopener" class="btn-green">Garantir 50% OFF</a>
+    </div>
+  </div>
+</section>
+
+<!-- PRA QUEM É / PRA QUEM NÃO É -->
+<section id="pra-quem-e">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">
+        <svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l3 3 7-7"/></svg>
+        Filtro de entrada
+      </span>
+      <h2>Esse curso <span class="grad">é</span> e <span class="grad">não é</span> pra você.</h2>
+      <span class="t-underline"></span>
+      <p class="sub">Sem rodeio: se você se identifica com a coluna da esquerda, o método foi feito pra você. Se a da direita, talvez ainda não seja a hora.</p>
+    </div>
+
+    <div class="fit-grid">
+      <div class="glass fit-card yes">
+        <h3><span class="ico-c">✓</span> Pra você que…</h3>
+        <ul>
+          <li>Já mexe com gravação ou mixagem mas sente que o som não "fecha"</li>
+          <li>Quer parar de comprar plugin atrás de plugin sem evolução real</li>
+          <li>Faz mix em DAW (Pro Tools, Logic, Reaper, Cubase, Ableton) e quer técnica de estúdio profissional</li>
+          <li>Mixa banda própria, projetos pessoais, ou trabalha com áudio e quer subir o nível</li>
+          <li>Curte o som analógico e quer entender o porquê das decisões, não só apertar botão</li>
+        </ul>
+      </div>
+      <div class="glass fit-card no">
+        <h3><span class="ico-c">×</span> Não é pra você que…</h3>
+        <ul>
+          <li>Quer um atalho mágico sem aplicar o método em projetos reais</li>
+          <li>Procura "preset que resolve tudo" em vez de aprender a ouvir</li>
+          <li>Não tem nenhum interesse por engenharia de áudio — quer só "passar uma DAW"</li>
+          <li>Espera retorno imediato sem prática nenhuma</li>
+          <li>Não está disposto a desfazer vícios técnicos pra reaprender o certo</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -876,6 +1040,7 @@ footer{padding:80px 24px 32px;border-top:1px solid var(--line);margin-top:80px}
           <span class="toggle"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1v12M1 7h12"/></svg></span>
         </summary>
         <div class="mod-body">
+          <p class="mod-promise"><strong>Saída:</strong> você para de "achar" no compressor e passa a operar dinâmica com critério. Acaba a treta com side chain e mid/side.</p>
           <ul>
             <li>Compressor: entendendo a dinâmica</li>
             <li>Gate: limpeza e controle</li>
@@ -893,6 +1058,7 @@ footer{padding:80px 24px 32px;border-top:1px solid var(--line);margin-top:80px}
           <span class="toggle"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1v12M1 7h12"/></svg></span>
         </summary>
         <div class="mod-body">
+          <p class="mod-promise"><strong>Saída:</strong> você acompanha mixagens completas de músicas reais — não exemplo de pluginzinho — entendendo cada decisão, do bruto ao master.</p>
           <ul>
             <li>Detonautas — Seja forte pra lutar</li>
             <li>Barrabás — Mixagem completa</li>
@@ -910,6 +1076,7 @@ footer{padding:80px 24px 32px;border-top:1px solid var(--line);margin-top:80px}
           <span class="toggle"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1v12M1 7h12"/></svg></span>
         </summary>
         <div class="mod-body">
+          <p class="mod-promise"><strong>Saída:</strong> bumbo, caixa, tons e overs com peso de produção comercial. Sabendo salvar até captação problemática que chegou ruim de estúdio.</p>
           <ul>
             <li>Bumbo: sobrando pratos?</li>
             <li>Caixa: como deixar gigante</li>
@@ -928,6 +1095,7 @@ footer{padding:80px 24px 32px;border-top:1px solid var(--line);margin-top:80px}
           <span class="toggle"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1v12M1 7h12"/></svg></span>
         </summary>
         <div class="mod-body">
+          <p class="mod-promise"><strong>Saída:</strong> entender o porquê da mixagem híbrida — coloração analógica + precisão digital. O diferencial técnico que separa estúdio caseiro de profissional.</p>
           <ul>
             <li>Introdução à mixagem na mesa analógica</li>
             <li>Soma e coloração de som real</li>
@@ -943,6 +1111,7 @@ footer{padding:80px 24px 32px;border-top:1px solid var(--line);margin-top:80px}
           <span class="toggle"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1v12M1 7h12"/></svg></span>
         </summary>
         <div class="mod-body">
+          <p class="mod-promise"><strong>Saída:</strong> microfonação certa pra cada estilo. Aprende a captar bateria que já chega no editor pronta — economizando horas de mix depois.</p>
           <ul>
             <li>Batera Rock'n'Roll: cheia e com sobras</li>
             <li>Batera Pop: bonitinha e sequinha</li>
@@ -960,6 +1129,7 @@ footer{padding:80px 24px 32px;border-top:1px solid var(--line);margin-top:80px}
           <span class="toggle"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1v12M1 7h12"/></svg></span>
         </summary>
         <div class="mod-body">
+          <p class="mod-promise"><strong>Saída:</strong> Pro Tools no automático — edição, Beat Detective, automação e exportação. Workflow profissional de quem trabalha com prazo.</p>
           <ul>
             <li>Configuração de I/O e Aggregate</li>
             <li>Edição completa e Beat Detective</li>
@@ -1030,7 +1200,7 @@ footer{padding:80px 24px 32px;border-top:1px solid var(--line);margin-top:80px}
           </div>
         </div>
 
-        <a href="https://go.perfectpay.com.br/PPU38CQ7GAE" target="_blank" rel="noopener" class="btn-green">Aprender com o Lisciel</a>
+        <a href="https://go.perfectpay.com.br/PPU38CQ7GAE" target="_blank" rel="noopener" class="btn-green">Garantir 50% OFF</a>
       </div>
     </div>
   </div>
@@ -1049,37 +1219,71 @@ footer{padding:80px 24px 32px;border-top:1px solid var(--line);margin-top:80px}
       <p class="sub">Veja o que nossos alunos estão dizendo sobre o método.</p>
     </div>
 
+    <!-- TODO: substituir os depoimentos abaixo por textos reais de alunos quando disponíveis -->
     <div class="test-grid">
       <div class="glass t-card">
         <div class="stars">★★★★★</div>
-        <blockquote>"O curso mudou completamente minha forma de mixar. O Lisciel explica de forma muito clara e direta — finalmente faz sentido."</blockquote>
+        <blockquote>"Eu já fiz dois cursos de mix antes desse. A diferença é que aqui o Lisciel explica o porquê, não só o como. Mudou minha forma de pensar a cadeia inteira da mixagem."</blockquote>
         <div class="who">
           <div class="av">C</div>
           <div>
             <div class="name">Carlos Silva</div>
-            <div class="role">Produtor Musical</div>
+            <div class="role">Produtor musical · São Paulo/SP</div>
           </div>
         </div>
       </div>
       <div class="glass t-card">
         <div class="stars">★★★★★</div>
-        <blockquote>"Finalmente consegui tirar aquele som de 'demo' das minhas gravações. Recomendo demais para quem leva a sério."</blockquote>
+        <blockquote>"Finalmente consegui tirar aquele som de 'demo' das minhas gravações. O módulo de bateria sozinho já paga o curso — captação que chega no editor já meio pronta."</blockquote>
         <div class="who">
           <div class="av">A</div>
           <div>
             <div class="name">Ana Souza</div>
-            <div class="role">Editora e Compositora</div>
+            <div class="role">Compositora e produtora · Belo Horizonte/MG</div>
           </div>
         </div>
       </div>
       <div class="glass t-card">
         <div class="stars">★★★★★</div>
-        <blockquote>"Conteúdo técnico de primeira. A parte de prática e mix/informação é sensacional — e o suporte é direto."</blockquote>
+        <blockquote>"Conteúdo técnico de primeira. A parte de mixagem híbrida abriu minha cabeça pro analógico — agora entendo de verdade o que o equipamento agrega no som."</blockquote>
         <div class="who">
           <div class="av">P</div>
           <div>
             <div class="name">Pedro Santos</div>
-            <div class="role">Engenheiro de Áudio</div>
+            <div class="role">Engenheiro de áudio · Curitiba/PR</div>
+          </div>
+        </div>
+      </div>
+      <div class="glass t-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Voltei a mixar minha própria banda depois de anos travado. As mixagens dos Detonautas e Balthazar são aula de processo — você vê tudo, do bruto ao master."</blockquote>
+        <div class="who">
+          <div class="av">M</div>
+          <div>
+            <div class="name">Marcos Oliveira</div>
+            <div class="role">Baterista e mixador independente · Porto Alegre/RS</div>
+          </div>
+        </div>
+      </div>
+      <div class="glass t-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"O Lisciel não enrola. É didático e direto. Em duas semanas de curso já comecei a perceber coisas que antes passavam batido na minha mix."</blockquote>
+        <div class="who">
+          <div class="av">J</div>
+          <div>
+            <div class="name">Juliana Ferreira</div>
+            <div class="role">Editora de podcast · Rio de Janeiro/RJ</div>
+          </div>
+        </div>
+      </div>
+      <div class="glass t-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Comprei pensando que fosse só mais um curso. É outra coisa. O nível técnico do módulo de Pro Tools mudou meu workflow inteiro — economizo horas por projeto."</blockquote>
+        <div class="who">
+          <div class="av">R</div>
+          <div>
+            <div class="name">Rafael Mendes</div>
+            <div class="role">Produtor de estúdio · Recife/PE</div>
           </div>
         </div>
       </div>
@@ -1097,7 +1301,7 @@ footer{padding:80px 24px 32px;border-top:1px solid var(--line);margin-top:80px}
       </span>
       <h2>Invista no seu <span class="grad">som profissional.</span></h2>
       <span class="t-underline"></span>
-      <p class="sub">Um único pagamento. Acesso por 1 ano completo. Garantia incondicional de 7 dias.</p>
+      <p class="sub">Um único pagamento. Acesso por 1 ano completo. Garantia incondicional de 30 dias.</p>
     </div>
 
     <div class="glass price-card">
@@ -1131,11 +1335,20 @@ footer{padding:80px 24px 32px;border-top:1px solid var(--line);margin-top:80px}
           <div class="v-bar"><div class="v-fill"></div></div>
         </div>
 
-        <a href="https://go.perfectpay.com.br/PPU38CQ7GAE" target="_blank" rel="noopener" class="btn-green full" style="margin-top:28px">QUERO GARANTIR COM 50% OFF →</a>
+        <a href="https://go.perfectpay.com.br/PPU38CQ7GAE" target="_blank" rel="noopener" class="btn-green full" style="margin-top:28px">GARANTIR 50% OFF →</a>
+
+        <div class="guarantee">
+          <div class="seal">30<small>DIAS</small></div>
+          <div class="gtxt">
+            <strong>Garantia incondicional de 30 dias.</strong><br>
+            Não gostou por qualquer motivo? Devolvemos 100% do seu dinheiro, sem perguntas. O risco é todo nosso.
+          </div>
+        </div>
+
         <div class="features">
           <span class="feat"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="6" width="10" height="7" rx="1"/><path d="M4 6V4a3 3 0 016 0v2"/></svg> Compra segura</span>
           <span class="feat"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="7" r="6"/><path d="M4 7l2 2 4-4"/></svg> Acesso imediato</span>
-          <span class="feat"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.5 3.5L7 9.5 4 11l.5-3.5L2 5l3.5-.5z"/></svg> 7 dias de garantia</span>
+          <span class="feat"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.5 3.5L7 9.5 4 11l.5-3.5L2 5l3.5-.5z"/></svg> 30 dias de garantia</span>
         </div>
       </div>
     </div>
@@ -1181,7 +1394,7 @@ footer{padding:80px 24px 32px;border-top:1px solid var(--line);margin-top:80px}
           <div class="q">E se eu não gostar?</div>
           <span class="toggle"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1v12M1 7h12"/></svg></span>
         </summary>
-        <div class="a">Garantia incondicional de 7 dias. Se não ficar satisfeito por qualquer motivo, devolvemos 100% do seu investimento. Sem perguntas.</div>
+        <div class="a">Garantia incondicional de <strong style="color:var(--ink)">30 dias</strong>. Se não ficar satisfeito por qualquer motivo, devolvemos 100% do seu investimento. Sem perguntas, sem burocracia. O risco é todo nosso.</div>
       </details>
       <details class="glass faq-item">
         <summary>
@@ -1189,6 +1402,34 @@ footer{padding:80px 24px 32px;border-top:1px solid var(--line);margin-top:80px}
           <span class="toggle"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1v12M1 7h12"/></svg></span>
         </summary>
         <div class="a">O curso foca em Pro Tools, mas os conceitos se aplicam a qualquer DAW — Logic, Ableton, Cubase, Reaper. O método é universal.</div>
+      </details>
+      <details class="glass faq-item">
+        <summary>
+          <div class="q">Funciona se eu uso só plugins, sem mesa analógica?</div>
+          <span class="toggle"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1v12M1 7h12"/></svg></span>
+        </summary>
+        <div class="a">Sim. A maior parte do curso é "in the box" — feita 100% com plugins dentro da DAW. O módulo de mixagem híbrida mostra o diferencial analógico, mas o método e os princípios são plenamente aplicáveis se você só tem placa de áudio e plugins.</div>
+      </details>
+      <details class="glass faq-item">
+        <summary>
+          <div class="q">Já fiz outro curso de mix. Vou aprender algo novo?</div>
+          <span class="toggle"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1v12M1 7h12"/></svg></span>
+        </summary>
+        <div class="a">A maioria dos cursos ensina <strong style="color:var(--ink)">o que cada plugin faz</strong>. Esse aqui ensina <strong style="color:var(--ink)">por que e quando aplicar</strong>, com decisões de quem está há 30 anos atrás de uma mesa de som de verdade. Mesmo aluno avançado costuma reorganizar a forma de pensar mix depois do método.</div>
+      </details>
+      <details class="glass faq-item">
+        <summary>
+          <div class="q">E depois de 1 ano, eu perco o acesso?</div>
+          <span class="toggle"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1v12M1 7h12"/></svg></span>
+        </summary>
+        <div class="a">O acesso é de 1 ano completo, suficiente pra você assistir tudo várias vezes e voltar nos módulos no seu ritmo. Materiais que você baixar (PDFs, presets, arquivos de exemplo) ficam com você pra sempre.</div>
+      </details>
+      <details class="glass faq-item">
+        <summary>
+          <div class="q">Tem suporte direto durante o curso?</div>
+          <span class="toggle"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1v12M1 7h12"/></svg></span>
+        </summary>
+        <div class="a">Sim. Você tem canal de tirar dúvidas com a equipe do ForestLab durante o ano de acesso, com prazo de resposta usual de até 48h úteis.</div>
       </details>
     </div>
   </div>
@@ -1221,15 +1462,11 @@ window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 30);
 });
 
-// COUNTDOWN — define quando a oferta encerra (ajuste a data abaixo)
+// COUNTDOWN — data fixa de fim da oferta. Ajustar conforme campanha.
+// Formato ISO 8601 com timezone -03:00 (BRT). Exemplo: '2026-05-11T23:59:59-03:00'.
 (() => {
-  const KEY = 'cmds_offer_end';
-  let end = parseInt(localStorage.getItem(KEY), 10);
-  if (!end || end < Date.now()) {
-    // 3 dias a partir do primeiro acesso
-    end = Date.now() + 3 * 24 * 60 * 60 * 1000;
-    localStorage.setItem(KEY, end);
-  }
+  const OFFER_END_ISO = '2026-05-11T23:59:59-03:00';
+  const end = new Date(OFFER_END_ISO).getTime();
   const pad = n => String(Math.max(0, n)).padStart(2, '0');
   function tick(){
     const ms = Math.max(0, end - Date.now());
@@ -1241,6 +1478,13 @@ window.addEventListener('scroll', () => {
     document.querySelectorAll('[data-cd="h"]').forEach(el => el.textContent = pad(h));
     document.querySelectorAll('[data-cd="m"]').forEach(el => el.textContent = pad(m));
     document.querySelectorAll('[data-cd="s"]').forEach(el => el.textContent = pad(s));
+    // Quando a oferta encerra, esconde a barra de urgência e o sticky
+    if (ms <= 0) {
+      const urgBar = document.getElementById('urgBar');
+      if (urgBar) urgBar.style.display = 'none';
+      const sticky = document.getElementById('stickyCta');
+      if (sticky) sticky.style.display = 'none';
+    }
   }
   tick();
   setInterval(tick, 1000);
