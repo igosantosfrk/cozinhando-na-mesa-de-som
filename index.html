@@ -1505,8 +1505,8 @@ if (vsl) {
   });
 }
 
-// META PIXEL — track InitiateCheckout em todo clique no CTA do PerfectPay
-document.querySelectorAll('a[href*="go.perfectpay.com.br"]').forEach(a => {
+// META PIXEL — track InitiateCheckout em todo clique no CTA do Kiwify
+document.querySelectorAll('a[href*="pay.kiwify.com.br"]').forEach(a => {
   a.addEventListener('click', () => {
     if (typeof fbq === 'function') {
       fbq('track', 'InitiateCheckout', { value: 140.00, currency: 'BRL' });
