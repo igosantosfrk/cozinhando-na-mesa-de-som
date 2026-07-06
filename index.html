@@ -24,1511 +24,343 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=409969490942884&ev=PageView&noscript=1"/></noscript>
 <!-- End Meta Pixel Code -->
 
-<!-- UTMify removido: estava interceptando cliques nos CTAs e cancelando a navegação para o checkout -->
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#0a0820;
-  --bg-2:#0d0a26;
-  --bg-3:#15102e;
-  --ink:#ffffff;
-  --ink-2:rgba(255,255,255,.78);
-  --ink-3:rgba(255,255,255,.55);
-  --ink-4:rgba(255,255,255,.35);
-  --line:rgba(168,131,255,.15);
-  --line-2:rgba(168,131,255,.28);
-  --violet:#a855f7;
-  --violet-2:#c084fc;
-  --magenta:#e879f9;
-  --grad-text:linear-gradient(90deg,#a855f7 0%,#d946ef 50%,#c084fc 100%);
-  --grad-cta:linear-gradient(180deg,#7dd56f 0%,#3a9b3f 100%);
-  --grad-cta-hover:linear-gradient(180deg,#8be07d 0%,#43ad48 100%);
-  --grad-card-edge:linear-gradient(135deg,rgba(168,131,255,.45),rgba(168,131,255,.05) 40%,transparent 70%);
-  --shadow-cta:0 12px 32px rgba(70,170,80,.35),inset 0 1px 0 rgba(255,255,255,.25);
-  --shadow-card:0 24px 60px rgba(0,0,0,.45);
-  --glow-violet:0 0 80px rgba(168,131,255,.35);
-}
-html{scroll-behavior:smooth}
 body{
-  font-family:'Poppins',system-ui,-apple-system,sans-serif;
-  background:var(--bg);color:var(--ink);
-  font-weight:400;line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
-  position:relative;
-  min-height:100vh;
-}
-
-/* GLOBAL BG: grid + radial glows */
-.bg-layer{
-  position:fixed;inset:0;z-index:-1;pointer-events:none;
-  background:
-    radial-gradient(ellipse 60% 40% at 50% 0%, rgba(168,131,255,.18), transparent 60%),
-    radial-gradient(ellipse 80% 50% at 100% 50%, rgba(217,70,239,.10), transparent 60%),
-    radial-gradient(ellipse 80% 50% at 0% 80%, rgba(168,131,255,.10), transparent 60%),
-    linear-gradient(180deg,#0a0820 0%, #07061a 100%);
-}
-.bg-layer::before{
-  content:'';position:absolute;inset:0;
-  background-image:
-    linear-gradient(rgba(168,131,255,.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(168,131,255,.04) 1px, transparent 1px);
-  background-size:64px 64px;
-  background-position:center;
-  mask-image:radial-gradient(ellipse 80% 60% at 50% 30%, black 30%, transparent 80%);
-  -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 30%, black 30%, transparent 80%);
-}
-.bg-layer::after{
-  content:'';position:absolute;inset:0;opacity:.4;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='1'/></svg>");
-  mix-blend-mode:overlay;opacity:.05;
-}
-
-a{color:inherit;text-decoration:none}
-button{background:none;border:0;color:inherit;font:inherit;cursor:pointer}
-img,svg{display:block;max-width:100%}
-
-/* SECTION LABEL (the small "ASSESSORIA" eyebrow) */
-.eyebrow{
-  display:inline-flex;align-items:center;gap:10px;
-  font-size:11px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;
-  color:var(--ink-4);
-}
-.eyebrow .ico{
-  width:16px;height:16px;color:var(--violet-2);
-}
-
-/* GRADIENT TEXT */
-.grad{
-  background:var(--grad-text);
-  -webkit-background-clip:text;background-clip:text;
-  -webkit-text-fill-color:transparent;color:transparent;
-  display:inline-block;
-}
-
-/* GREEN CTA */
-.btn-green{
-  display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  padding:18px 42px;border-radius:8px;
-  background:var(--grad-cta);
-  color:#fff;font-weight:600;font-size:14px;letter-spacing:.18em;text-transform:uppercase;
-  box-shadow:var(--shadow-cta);
-  transition:transform .25s,box-shadow .25s,background .25s;
-  border:0;cursor:pointer;
-}
-.btn-green:hover{background:var(--grad-cta-hover);transform:translateY(-2px);box-shadow:0 18px 40px rgba(70,170,80,.45),inset 0 1px 0 rgba(255,255,255,.3)}
-.btn-green.full{width:100%}
-
-/* PURPLE OUTLINE BUTTON (alt) */
-.btn-outline{
-  display:inline-flex;align-items:center;gap:10px;padding:14px 28px;border-radius:8px;
-  border:1px solid var(--line-2);color:var(--ink);font-weight:500;font-size:13px;letter-spacing:.12em;text-transform:uppercase;
-  transition:all .25s;background:rgba(168,131,255,.05);
-}
-.btn-outline:hover{background:rgba(168,131,255,.12);border-color:var(--violet-2)}
-
-/* TITLE UNDERLINE (small purple bar below section heading) */
-.t-underline{
-  display:block;width:64px;height:3px;border-radius:2px;
-  background:linear-gradient(90deg,var(--violet),var(--magenta));
-  box-shadow:0 0 24px var(--violet);
-  margin-top:18px;
-}
-
-/* GLASS CARD (matching Rugido style) */
-.glass{
-  position:relative;border-radius:18px;
-  background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.015));
-  backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
-  box-shadow:var(--shadow-card);
-  overflow:hidden;
-  isolation:isolate;
-}
-.glass::before{
-  content:'';position:absolute;inset:0;border-radius:inherit;padding:1px;
-  background:var(--grad-card-edge);
-  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite:xor;mask-composite:exclude;
-  pointer-events:none;
-}
-.glass::after{
-  content:'';position:absolute;left:30%;right:30%;top:-1px;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);
-  pointer-events:none;
-}
-
-/* TYPOGRAPHY HELPERS */
-h1,h2,h3,h4{font-weight:700;letter-spacing:-.015em;line-height:1.12}
-.kicker{font-size:14px;font-weight:500;color:var(--ink-3);letter-spacing:.02em}
-
-/* NAV */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  padding:20px 56px;
-  display:flex;justify-content:space-between;align-items:center;
-  transition:background .3s,backdrop-filter .3s,padding .3s;
-}
-nav.scrolled{
-  background:rgba(10,8,32,.78);
-  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  padding:14px 56px;
-  border-bottom:1px solid var(--line);
-}
-.brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:20px}
-.brand .mark{
-  width:34px;height:34px;border-radius:8px;
-  background:linear-gradient(135deg,var(--violet),var(--magenta));
-  display:grid;place-items:center;font-size:11px;font-weight:800;letter-spacing:.08em;
-  box-shadow:0 6px 20px rgba(168,131,255,.4);
-}
-nav ul{list-style:none;display:flex;gap:34px;align-items:center}
-nav ul a{font-size:14px;color:var(--ink-3);font-weight:500;transition:color .25s}
-nav ul a:hover{color:var(--ink)}
-
-/* HERO */
-.hero{
-  min-height:100vh;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;padding:160px 24px 120px;position:relative;
-}
-.hero .eyebrow{margin-bottom:36px;animation:fadeUp .9s .1s both}
-.hero h1{
-  font-size:clamp(36px,5.4vw,72px);
-  font-weight:600;line-height:1.08;letter-spacing:-.02em;
-  max-width:1100px;
-  animation:fadeUp 1s .25s both;
-}
-.hero h1 .grad{font-weight:700}
-.hero .sub{
-  margin-top:28px;font-size:16px;color:var(--ink-3);
-  max-width:560px;animation:fadeUp 1s .45s both;
-}
-.hero .sub strong{color:var(--ink-2);font-weight:600}
-.hero .cta-wrap{margin-top:36px;animation:fadeUp 1s .6s both}
-.hero .stats{
-  margin-top:80px;display:flex;gap:64px;justify-content:center;flex-wrap:wrap;
-  animation:fadeUp 1s .8s both;
-}
-.hero .stat{text-align:center}
-.hero .stat .n{font-size:32px;font-weight:700;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-.02em}
-.hero .stat .l{font-size:11px;font-weight:500;color:var(--ink-4);text-transform:uppercase;letter-spacing:.18em;margin-top:6px}
-
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-
-/* URGENCY TOP BAR */
-.urg-bar{
-  position:fixed;top:0;left:0;right:0;z-index:101;
-  background:linear-gradient(90deg,#b91c1c 0%,#dc2626 50%,#b91c1c 100%);
-  color:#fff;font-size:13px;font-weight:500;
-  padding:10px 24px;text-align:center;
-  display:flex;align-items:center;justify-content:center;gap:18px;
-  box-shadow:0 2px 12px rgba(220,38,38,.4);
-  flex-wrap:wrap;
-}
-.urg-bar .pulse{display:inline-block;width:8px;height:8px;border-radius:50%;background:#fff;box-shadow:0 0 0 0 rgba(255,255,255,.7);animation:pulseDot 1.4s infinite}
-@keyframes pulseDot{0%{box-shadow:0 0 0 0 rgba(255,255,255,.7)}70%{box-shadow:0 0 0 12px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
-.urg-bar strong{font-weight:700;letter-spacing:.02em}
-.urg-bar .urg-timer{display:inline-flex;gap:6px;align-items:center;font-variant-numeric:tabular-nums;font-weight:700;letter-spacing:.05em}
-.urg-bar .urg-timer span{background:rgba(0,0,0,.28);padding:3px 8px;border-radius:4px;min-width:32px;text-align:center}
-
-/* Push nav and hero down to make room for urgency bar */
-nav{top:42px}
-nav.scrolled{top:42px}
-.hero{padding-top:200px}
-@media(max-width:680px){
-  .urg-bar{font-size:11px;padding:8px 14px;gap:10px}
-  .urg-bar .urg-timer span{padding:2px 6px;min-width:26px;font-size:11px}
-  .hero{padding-top:180px}
-}
-
-/* SCARCITY CALLOUT (inline urgency banners) */
-.scarcity{
-  max-width:880px;margin:0 auto 32px;
-  padding:18px 24px;border-radius:14px;
-  background:linear-gradient(135deg,rgba(220,38,38,.12),rgba(220,38,38,.04));
-  border:1px solid rgba(248,113,113,.25);
-  display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:center;
-  font-size:14px;color:var(--ink-2);text-align:center;
-}
-.scarcity .ico-flame{
-  display:grid;place-items:center;width:36px;height:36px;border-radius:10px;
-  background:linear-gradient(135deg,#dc2626,#f97316);color:#fff;flex-shrink:0;
-  box-shadow:0 6px 18px rgba(220,38,38,.4);
-}
-.scarcity strong{color:#f87171;font-weight:700}
-
-/* HERO URGENCY CHIP */
-.hero-urg{
-  display:inline-flex;align-items:center;gap:10px;
-  padding:8px 16px;border-radius:999px;margin-bottom:20px;
-  background:linear-gradient(90deg,rgba(220,38,38,.15),rgba(220,38,38,.05));
-  border:1px solid rgba(248,113,113,.35);
-  font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#fca5a5;
-  animation:fadeUp .9s .05s both;
-}
-.hero-urg .pulse{width:7px;height:7px;border-radius:50%;background:#f87171;box-shadow:0 0 12px #f87171;animation:pulseDot 1.4s infinite}
-
-/* PRICING — countdown + vagas */
-.price-banner{
-  background:linear-gradient(90deg,#dc2626,#b91c1c);color:#fff;
-  padding:16px 24px;text-align:center;font-weight:700;font-size:13px;letter-spacing:.18em;text-transform:uppercase;
-  display:flex;align-items:center;justify-content:center;gap:12px;
-}
-.price-banner .pulse{width:8px;height:8px;border-radius:50%;background:#fff;animation:pulseDot 1.4s infinite}
-.price-discount-tag{
-  display:inline-block;background:linear-gradient(135deg,#dc2626,#f97316);color:#fff;
-  padding:6px 14px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.1em;
-  margin-bottom:12px;box-shadow:0 8px 24px rgba(220,38,38,.45);
-}
-.countdown{
-  display:flex;justify-content:center;gap:12px;margin:24px 0;
-}
-.countdown .unit{
-  display:flex;flex-direction:column;align-items:center;gap:6px;
-  background:linear-gradient(180deg,rgba(220,38,38,.18),rgba(220,38,38,.05));
-  border:1px solid rgba(248,113,113,.3);border-radius:12px;
-  padding:14px 18px;min-width:78px;
-}
-.countdown .v{font-family:'Poppins';font-size:32px;font-weight:700;color:#fff;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
-.countdown .l{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#fca5a5}
-.vagas{
-  margin:24px auto 0;max-width:380px;
-  background:rgba(220,38,38,.08);border:1px solid rgba(248,113,113,.2);border-radius:10px;
-  padding:14px 18px;
-}
-.vagas .v-top{display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600;color:var(--ink-2);margin-bottom:8px}
-.vagas .v-top strong{color:#f87171}
-.vagas .v-bar{height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden}
-.vagas .v-fill{height:100%;width:88%;background:linear-gradient(90deg,#dc2626,#f97316);border-radius:3px;box-shadow:0 0 12px rgba(248,113,113,.6);position:relative;overflow:hidden}
-.vagas .v-fill::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);animation:vagaShine 2s infinite}
-@keyframes vagaShine{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
-.price-savings{font-size:14px;color:var(--ink-3);margin-top:6px}
-.price-savings strong{color:#86efac;font-weight:700}
-
-/* STICKY BOTTOM CTA BAR */
-.sticky-cta{
-  position:fixed;bottom:0;left:0;right:0;z-index:99;
-  background:rgba(13,10,38,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  border-top:1px solid var(--line-2);
-  padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:18px;
-  transform:translateY(100%);transition:transform .4s cubic-bezier(.7,0,.3,1);
-  box-shadow:0 -10px 40px rgba(0,0,0,.5);
-}
-.sticky-cta.show{transform:translateY(0)}
-.sticky-cta .left{display:flex;align-items:center;gap:14px;min-width:0}
-.sticky-cta .left .label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#fca5a5;font-weight:600}
-.sticky-cta .left .timer{font-family:'Poppins';font-size:18px;font-weight:700;color:#fff;font-variant-numeric:tabular-nums;letter-spacing:.04em}
-.sticky-cta .left .timer span{background:rgba(220,38,38,.22);padding:3px 8px;border-radius:5px;margin:0 2px}
-.sticky-cta .btn-green{padding:14px 28px;font-size:13px;white-space:nowrap}
-@media(max-width:680px){
-  .sticky-cta{padding:10px 14px;gap:10px}
-  .sticky-cta .left .label{display:none}
-  .sticky-cta .left .timer{font-size:14px}
-  .sticky-cta .btn-green{padding:12px 18px;font-size:11px;letter-spacing:.12em}
-}
-
-/* VSL PLAYER (sales video) */
-.vsl{margin-top:48px;width:100%;max-width:880px;animation:fadeUp 1s .55s both}
-.vsl-frame{padding:12px;border-radius:22px;position:relative}
-.vsl-frame::before{
-  content:'';position:absolute;inset:-2px;border-radius:24px;z-index:-1;
-  background:conic-gradient(from 180deg at 50% 50%, rgba(168,131,255,.0), rgba(168,131,255,.55), rgba(217,70,239,.55), rgba(168,131,255,.0));
-  filter:blur(18px);opacity:.6;animation:vslGlow 8s linear infinite;
-}
-@keyframes vslGlow{to{transform:rotate(360deg)}}
-.vsl-aspect{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#0d0a26}
-.vsl-aspect iframe,.vsl-aspect .vsl-video{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:1;background:#000}
-.vsl-aspect.playing .vsl-poster{display:none}
-.vsl-poster{
-  position:absolute;inset:0;width:100%;height:100%;z-index:2;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;
-  background:
-    linear-gradient(180deg,rgba(10,8,32,.55) 0%,rgba(10,8,32,.15) 30%,rgba(10,8,32,.15) 70%,rgba(10,8,32,.7) 100%),
-    radial-gradient(ellipse at 50% 50%,rgba(168,131,255,.18),transparent 65%);
-  cursor:pointer;border:0;color:inherit;font:inherit;padding:0;overflow:hidden;
-  transition:background .3s;
-}
-.vsl-poster:hover{background:
-  linear-gradient(180deg,rgba(10,8,32,.45) 0%,rgba(10,8,32,.05) 30%,rgba(10,8,32,.05) 70%,rgba(10,8,32,.6) 100%),
-  radial-gradient(ellipse at 50% 50%,rgba(168,131,255,.22),transparent 65%)}
-.vsl-bg{display:none}
-.vsl-wave{
-  position:absolute;left:0;right:0;bottom:0;height:90px;
-  display:flex;align-items:flex-end;justify-content:center;gap:5px;padding:0 24px 20px;
-  opacity:.5;pointer-events:none;
-}
-.vsl-wave span{
-  display:block;width:4px;border-radius:2px;
-  background:linear-gradient(180deg,var(--magenta),var(--violet));
-  animation:vslBar 1.4s ease-in-out infinite;
-}
-.vsl-wave span:nth-child(odd){animation-delay:.2s}
-.vsl-wave span:nth-child(3n){animation-delay:.4s}
-.vsl-wave span:nth-child(5n){animation-delay:.6s}
-.vsl-wave span:nth-child(7n){animation-delay:.8s}
-@keyframes vslBar{0%,100%{height:8px}50%{height:48px}}
-.vsl-play{
-  position:relative;z-index:2;
-  width:88px;height:88px;border-radius:50%;
-  background:linear-gradient(180deg,#7dd56f,#3a9b3f);
-  display:grid;place-items:center;color:#fff;
-  box-shadow:0 18px 50px rgba(70,170,80,.5),0 0 0 12px rgba(125,213,111,.12),0 0 0 24px rgba(125,213,111,.06);
-  transition:transform .3s;
-}
-.vsl-poster:hover .vsl-play{transform:scale(1.06)}
-.vsl-play svg{width:32px;height:32px;margin-left:4px}
-.vsl-meta{
-  position:absolute;left:24px;right:24px;top:20px;z-index:2;
-  display:flex;justify-content:space-between;align-items:center;
-  font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);font-weight:500;
-}
-.vsl-tag{display:inline-flex;align-items:center;gap:8px}
-.vsl-tag::before{
-  content:'';width:8px;height:8px;border-radius:50%;background:#ff3b3b;
-  box-shadow:0 0 0 4px rgba(255,59,59,.18);animation:vslPulse 1.6s infinite;
-}
-@keyframes vslPulse{0%,100%{opacity:1}50%{opacity:.4}}
-.vsl-time{
-  background:rgba(0,0,0,.5);padding:5px 10px;border-radius:6px;
-  border:1px solid var(--line);color:var(--ink-2);
-  font-variant-numeric:tabular-nums;letter-spacing:.05em;
-}
-
-@media(max-width:680px){
-  .vsl{margin-top:36px}
-  .vsl-frame{padding:8px;border-radius:18px}
-  .vsl-play{width:64px;height:64px;box-shadow:0 12px 30px rgba(70,170,80,.5),0 0 0 8px rgba(125,213,111,.12)}
-  .vsl-play svg{width:24px;height:24px}
-  .vsl-meta{font-size:10px;left:16px;right:16px;top:14px}
-}
-
-/* SECTIONS GENERAL */
-section{padding:120px 24px;position:relative}
-.wrap{max-width:1180px;margin:0 auto}
-.head{text-align:center;margin-bottom:60px;display:flex;flex-direction:column;align-items:center;gap:20px}
-.head h2{font-size:clamp(30px,4vw,46px);font-weight:600;max-width:880px}
-.head h2 .grad{font-weight:700}
-.head .sub{color:var(--ink-3);max-width:600px;font-size:16px;margin-top:8px}
-
-/* DUAL COLUMN (CONTENT + FORM) */
-.dual{
-  display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;
-}
-.dual-left h2{font-size:clamp(28px,3.4vw,40px);font-weight:600;line-height:1.15;letter-spacing:-.015em}
-
-/* CALLOUT (purple-accented info card) */
-.callout{
-  position:relative;border-radius:14px;
-  padding:24px 28px;
-  background:linear-gradient(180deg,rgba(168,131,255,.06),rgba(168,131,255,.015));
-  border:1px solid var(--line);
-  font-size:15px;line-height:1.65;color:var(--ink-2);
-  margin-top:20px;
-  overflow:hidden;
-}
-.callout::before{
-  content:'';position:absolute;left:-30%;top:-50%;width:80%;height:140%;
-  background:radial-gradient(closest-side,rgba(217,70,239,.35),transparent 70%);
-  filter:blur(30px);pointer-events:none;
-}
-.callout strong{color:var(--ink);font-weight:600}
-.callout em{font-style:normal;color:var(--violet-2);font-weight:600}
-
-/* FORM CARD (the dark form panel like Rugido) */
-.form-card{padding:36px 36px 32px}
-.form-card .field{margin-bottom:18px}
-.form-card label{display:block;font-size:13px;color:var(--ink-2);margin-bottom:8px;font-weight:500}
-.form-card input,.form-card select,.form-card textarea{
-  width:100%;padding:14px 16px;
-  background:rgba(255,255,255,.07);
-  border:1px solid rgba(255,255,255,.06);
-  border-radius:8px;
-  color:var(--ink);font-family:inherit;font-size:14px;
-  outline:0;transition:border-color .25s,background .25s;
-}
-.form-card input::placeholder,.form-card select::placeholder{color:rgba(255,255,255,.35)}
-.form-card input:focus,.form-card select:focus{border-color:var(--violet);background:rgba(255,255,255,.09)}
-.form-card .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.form-card .submit{margin-top:26px}
-
-/* PROBLEM SECTION (dark with chart-like vibe) */
-.problem{padding:120px 24px;text-align:center;position:relative;overflow:hidden}
-.problem .head{margin-bottom:30px}
-.problem .body{max-width:680px;margin:0 auto;color:var(--ink-3);font-size:15px;line-height:1.85;display:flex;flex-direction:column;gap:14px}
-.problem .body strong{color:var(--ink);font-weight:600}
-.problem .body em{color:var(--violet-2);font-style:normal;font-weight:600}
-.problem-chart{
-  margin-top:60px;height:280px;position:relative;
-  max-width:1000px;margin-left:auto;margin-right:auto;
-}
-.problem-chart svg{width:100%;height:100%;overflow:visible}
-
-/* PILLARS (3 cards row) */
-.pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
-.pillar{padding:36px 32px;text-align:left;display:flex;flex-direction:column;gap:18px;min-height:280px}
-.pillar .ico{
-  width:54px;height:54px;border-radius:14px;
-  background:linear-gradient(135deg,rgba(168,131,255,.25),rgba(217,70,239,.15));
-  border:1px solid var(--line-2);display:grid;place-items:center;color:var(--violet-2);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.1);
-}
-.pillar h3{font-size:22px;font-weight:600;line-height:1.2}
-.pillar p{font-size:14px;color:var(--ink-3);line-height:1.7}
-
-/* COMPARISON */
-.comparison{padding:120px 24px}
-.dec-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:980px;margin:0 auto}
-.dec{padding:40px 36px;display:flex;flex-direction:column;gap:18px;min-height:240px;position:relative}
-.dec .num{
-  position:absolute;top:24px;right:24px;
-  width:42px;height:42px;border-radius:50%;
-  display:grid;place-items:center;font-weight:700;font-size:16px;
-  background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--ink-3);
-}
-.dec.pro .num{background:linear-gradient(135deg,var(--violet),var(--magenta));border:0;color:#fff;box-shadow:0 6px 20px rgba(168,131,255,.4)}
-.dec h3{font-size:22px;font-weight:600;line-height:1.3;max-width:380px}
-.dec h3 .grad{font-weight:700}
-.dec p{color:var(--ink-3);font-size:14px;line-height:1.7}
-.dec.pro::after{
-  content:'';position:absolute;inset:-1px;border-radius:inherit;pointer-events:none;
-  background:radial-gradient(ellipse at top right, rgba(168,131,255,.25), transparent 60%);
-}
-
-/* MODULES (accordion) */
-.mod-list{max-width:880px;margin:48px auto 0;display:flex;flex-direction:column;gap:14px}
-.mod{padding:0;overflow:hidden}
-.mod summary{
-  list-style:none;cursor:pointer;
-  padding:24px 28px;display:flex;align-items:center;gap:20px;
-}
-.mod summary::-webkit-details-marker{display:none}
-.mod .num{
-  flex-shrink:0;width:44px;height:44px;border-radius:10px;
-  display:grid;place-items:center;font-weight:700;font-size:14px;
-  background:linear-gradient(135deg,rgba(168,131,255,.25),rgba(217,70,239,.15));
-  border:1px solid var(--line-2);color:var(--violet-2);
-}
-.mod h3{font-size:18px;font-weight:600;flex:1;line-height:1.3}
-.mod .toggle{
-  width:36px;height:36px;border-radius:50%;
-  display:grid;place-items:center;
-  background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--ink-2);
-  transition:all .3s;
-}
-.mod[open] .toggle{background:linear-gradient(135deg,var(--violet),var(--magenta));border:0;color:#fff;transform:rotate(45deg)}
-.mod .toggle svg{width:14px;height:14px}
-.mod-body{padding:0 28px 26px 92px}
-.mod-body ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px 28px}
-.mod-body li{
-  padding-left:22px;position:relative;color:var(--ink-2);font-size:14px;line-height:1.6;
-}
-.mod-body li::before{
-  content:'';position:absolute;left:0;top:.55em;width:8px;height:8px;border-radius:50%;
-  background:linear-gradient(135deg,var(--violet),var(--magenta));
-  box-shadow:0 0 8px rgba(168,131,255,.6);
-}
-
-/* AUTHOR */
-.author-grid{display:grid;grid-template-columns:5fr 7fr;gap:60px;align-items:center}
-.author-portrait{
-  border-radius:20px;position:relative;overflow:hidden;
-  background:linear-gradient(135deg,#1a1240,#0d0a26);
-  border:1px solid var(--line-2);
-  display:block;line-height:0;
-}
-.author-portrait::before{
-  content:'';position:absolute;inset:0;
-  background:
-    radial-gradient(ellipse at 50% 30%, rgba(168,131,255,.4), transparent 55%),
-    radial-gradient(ellipse at 50% 80%, rgba(217,70,239,.25), transparent 60%);
-}
-.author-portrait .silhouette{
-  position:absolute;left:50%;top:50%;transform:translate(-50%,-44%);width:55%;color:rgba(255,255,255,.22);
-}
-.author-photo{
-  position:relative;width:100%;height:auto;display:block;z-index:1;
-}
-.author-portrait::after{
-  content:'';position:absolute;inset:0;z-index:2;pointer-events:none;
-  background:linear-gradient(180deg,transparent 50%,rgba(10,8,32,.9) 100%);
-}
-.author-portrait .badge{z-index:3}
-.author-portrait .badge{
-  position:absolute;bottom:24px;left:24px;right:24px;
-  display:flex;justify-content:space-between;align-items:end;
-  font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);
-}
-.author-portrait .badge .sig{
-  font-size:28px;font-weight:600;color:var(--ink);text-transform:none;letter-spacing:-.01em;
-  background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-}
-.author-text h2{font-size:clamp(28px,3.4vw,40px);font-weight:600;line-height:1.15;letter-spacing:-.015em}
-.author-text > p{margin-top:20px;color:var(--ink-3);line-height:1.85;font-size:15px}
-.author-text > p strong{color:var(--ink);font-weight:600}
-.author-stats{
-  display:flex;gap:36px;margin:32px 0 28px;padding:24px 0;
-  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-}
-.author-stats .item .v{font-size:28px;font-weight:700;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.author-stats .item .k{font-size:11px;color:var(--ink-4);text-transform:uppercase;letter-spacing:.18em;margin-top:4px}
-
-/* TESTIMONIALS */
-.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
-.t-card{padding:32px 28px;display:flex;flex-direction:column;gap:20px;min-height:280px}
-.t-card .stars{color:var(--violet-2);letter-spacing:4px;font-size:14px}
-.t-card blockquote{font-size:16px;line-height:1.6;color:var(--ink-2);font-weight:400;flex:1}
-.t-card .who{display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid var(--line)}
-.t-card .av{
-  width:42px;height:42px;border-radius:50%;
-  background:linear-gradient(135deg,var(--violet),var(--magenta));
-  display:grid;place-items:center;font-weight:700;font-size:14px;color:#fff;
-  box-shadow:0 6px 18px rgba(168,131,255,.35);
-}
-.t-card .name{font-size:14px;font-weight:600}
-.t-card .role{font-size:12px;color:var(--ink-4)}
-
-/* PRICING */
-.pricing{padding:140px 24px;text-align:center}
-.price-card{
-  max-width:520px;margin:60px auto 0;padding:0;overflow:hidden;
-  border-radius:24px;
-}
-.price-top{
-  padding:24px;text-align:center;
-  background:linear-gradient(180deg,rgba(168,131,255,.18),rgba(168,131,255,.05));
-  border-bottom:1px solid var(--line);
-  font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--violet-2);font-weight:600;
-}
-.price-body{padding:48px 40px}
-.price-body .access{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--violet-2);font-weight:600;margin-bottom:14px}
-.price-body .old{font-size:18px;color:var(--ink-4);text-decoration:line-through}
-.price-body .now{font-size:64px;font-weight:700;letter-spacing:-.025em;line-height:1;margin:6px 0 32px}
-.price-body .now small{font-size:18px;font-weight:500;color:var(--ink-3);margin-left:4px}
-.price-body .features{display:flex;justify-content:center;gap:28px;margin-top:24px;padding-top:22px;border-top:1px solid var(--line);flex-wrap:wrap}
-.price-body .feat{font-size:12px;color:var(--ink-3);display:flex;align-items:center;gap:8px}
-.price-body .feat svg{width:14px;height:14px;color:var(--violet-2)}
-
-/* FAQ */
-.faq-list{max-width:860px;margin:48px auto 0;display:flex;flex-direction:column;gap:12px}
-.faq-item{padding:0;overflow:hidden}
-.faq-item summary{
-  list-style:none;cursor:pointer;
-  padding:22px 28px;display:flex;align-items:center;gap:20px;
-}
-.faq-item summary::-webkit-details-marker{display:none}
-.faq-item .q{flex:1;font-size:16px;font-weight:600;line-height:1.4}
-.faq-item .toggle{
-  width:34px;height:34px;border-radius:50%;
-  display:grid;place-items:center;
-  background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--ink-2);
-  transition:all .3s;flex-shrink:0;
-}
-.faq-item[open] .toggle{background:linear-gradient(135deg,var(--violet),var(--magenta));border:0;color:#fff;transform:rotate(45deg)}
-.faq-item .a{padding:0 28px 24px;color:var(--ink-3);font-size:14px;line-height:1.75}
-
-/* FOOTER */
-footer{padding:80px 24px 32px;border-top:1px solid var(--line);margin-top:80px}
-.foot-wrap{max-width:1180px;margin:0 auto;text-align:center}
-.foot-brand{display:flex;align-items:center;justify-content:center;gap:12px;font-weight:700;font-size:22px;margin-bottom:14px}
-.foot-brand .mark{width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,var(--violet),var(--magenta));display:grid;place-items:center;font-size:11px;font-weight:800}
-.foot-tag{color:var(--ink-3);font-size:14px;max-width:480px;margin:0 auto}
-.foot-bottom{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-size:12px;color:var(--ink-4);letter-spacing:.05em}
-
-/* PRA QUEM É / PRA QUEM NÃO É */
-.fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1080px;margin:48px auto 0}
-.fit-card{padding:36px 32px;display:flex;flex-direction:column;gap:16px}
-.fit-card h3{font-size:20px;font-weight:600;display:flex;align-items:center;gap:10px}
-.fit-card h3 .ico-c{
-  width:28px;height:28px;border-radius:50%;display:grid;place-items:center;flex-shrink:0;
-  font-size:14px;font-weight:700;
-}
-.fit-card.yes h3 .ico-c{background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;box-shadow:0 6px 18px rgba(34,197,94,.35)}
-.fit-card.no h3 .ico-c{background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--ink-3)}
-.fit-card ul{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:6px}
-.fit-card li{padding-left:26px;position:relative;font-size:14px;color:var(--ink-2);line-height:1.6}
-.fit-card.yes li::before{
-  content:'✓';position:absolute;left:0;top:0;color:#22c55e;font-weight:700;font-size:16px;
-}
-.fit-card.no li{color:var(--ink-3)}
-.fit-card.no li::before{
-  content:'×';position:absolute;left:2px;top:-1px;color:var(--ink-4);font-weight:700;font-size:18px;
-}
-
-/* MOD PROMISE */
-.mod-promise{
-  font-size:14px;color:var(--violet-2);font-weight:500;
-  margin:0 0 16px 0;line-height:1.5;
-  padding:10px 14px;border-radius:8px;
-  background:linear-gradient(180deg,rgba(168,131,255,.08),rgba(168,131,255,.02));
-  border-left:3px solid var(--violet);
-}
-.mod-promise strong{color:var(--ink);font-weight:600}
-
-/* GUARANTEE BOX */
-.guarantee{
-  max-width:520px;margin:32px auto 0;
-  padding:24px 28px;border-radius:14px;
-  background:linear-gradient(135deg,rgba(34,197,94,.08),rgba(34,197,94,.02));
-  border:1px solid rgba(34,197,94,.25);
-  display:flex;align-items:center;gap:18px;text-align:left;
-}
-.guarantee .seal{
-  width:64px;height:64px;border-radius:50%;flex-shrink:0;
-  background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;
-  display:grid;place-items:center;font-weight:700;font-size:11px;letter-spacing:.05em;text-align:center;line-height:1.1;
-  box-shadow:0 8px 24px rgba(34,197,94,.4),inset 0 1px 0 rgba(255,255,255,.3);
-}
-.guarantee .seal small{display:block;font-size:18px;font-weight:800;letter-spacing:0;margin-top:1px}
-.guarantee .gtxt{font-size:13px;color:var(--ink-2);line-height:1.55}
-.guarantee .gtxt strong{color:#86efac;font-weight:700}
-
-/* RESPONSIVE */
-@media(max-width:980px){
-  .fit-grid{grid-template-columns:1fr}
-  nav{padding:14px 20px}
-  nav.scrolled{padding:12px 20px}
-  nav ul li:not(:last-child){display:none}
-  .hero{padding:140px 20px 80px}
-  .hero .stats{gap:32px;margin-top:60px}
-  section{padding:80px 20px}
-  .dual,.author-grid{grid-template-columns:1fr;gap:40px}
-  .pillars-grid,.test-grid{grid-template-columns:1fr}
-  .dec-grid{grid-template-columns:1fr}
-  .mod summary{padding:20px 20px;gap:14px}
-  .mod h3{font-size:15px}
-  .mod-body{padding:0 20px 22px 78px}
-  .mod-body ul{grid-template-columns:1fr}
-  .form-card{padding:28px 24px 24px}
-  .form-card .row{grid-template-columns:1fr}
-  .price-body{padding:40px 28px}
-  .price-body .now{font-size:48px}
-  .pricing{padding:80px 20px}
+  font-family:Arial,Helvetica,sans-serif;
+  background:#ffffff;
+  color:#111111;
+  font-size:18px;
+  line-height:1.65;
+  margin:0;
+  padding:0;
+}
+.wrap{max-width:700px;margin:0 auto;padding:24px 18px 60px}
+h1{font-size:30px;line-height:1.25;margin:18px 0 14px}
+h2{font-size:24px;line-height:1.3;margin:38px 0 12px}
+h3{font-size:20px;margin:28px 0 8px}
+p{margin:0 0 16px}
+ul{margin:0 0 16px;padding-left:24px}
+li{margin-bottom:6px}
+hr{border:none;border-top:1px solid #ddd;margin:36px 0}
+a{color:#0000cc}
+mark{background:#ffff66;padding:0 2px}
+.vermelho{color:#cc0000}
+.aviso{
+  background:#ffff99;
+  border:1px dashed #cc0000;
+  padding:10px 14px;
+  text-align:center;
+  font-weight:bold;
+  margin:0 0 22px;
+}
+.botao{
+  display:block;
+  background:#1e9e2a;
+  color:#ffffff;
+  font-size:22px;
+  font-weight:bold;
+  text-align:center;
+  text-decoration:none;
+  padding:18px 20px;
+  border:2px solid #157a1f;
+  border-radius:4px;
+  margin:26px 0;
+}
+.botao:hover{background:#23b331}
+.abaixo-botao{text-align:center;font-size:14px;color:#555;margin-top:-16px;margin-bottom:26px}
+video{width:100%;border:1px solid #ccc;margin:8px 0 4px}
+.depo{
+  border-left:4px solid #cccccc;
+  background:#f7f7f7;
+  padding:12px 16px;
+  margin:0 0 18px;
+  font-style:italic;
+}
+.depo b{font-style:normal}
+.caixa-preco{
+  border:2px solid #111;
+  padding:20px 22px;
+  text-align:center;
+  margin:24px 0;
+}
+.caixa-preco .de{text-decoration:line-through;color:#777}
+.caixa-preco .por{font-size:40px;font-weight:bold;color:#cc0000}
+.garantia{
+  border:2px dashed #1e9e2a;
+  background:#f2fbf3;
+  padding:16px 18px;
+  margin:24px 0;
+}
+.foto{
+  float:right;
+  width:180px;
+  margin:0 0 12px 16px;
+  border:1px solid #ccc;
+  padding:3px;
+  background:#fff;
+}
+details{border:1px solid #ddd;margin-bottom:10px;padding:10px 14px}
+summary{font-weight:bold;cursor:pointer}
+details p{margin:10px 0 4px}
+.contagem{font-weight:bold;color:#cc0000}
+.rodape{font-size:13px;color:#777;text-align:center;margin-top:50px}
+@media(max-width:520px){
+  h1{font-size:25px}
+  .foto{float:none;display:block;margin:0 auto 14px}
 }
 </style>
 </head>
 <body>
+<div class="wrap">
 
-<div class="bg-layer"></div>
+<div class="aviso">⚠️ 50% OFF — Últimos dias da edição 2026. A oferta encerra em <span class="contagem" id="cont">--</span></div>
 
-<!-- URGENCY TOP BAR -->
-<div class="urg-bar" id="urgBar">
-  <span class="pulse"></span>
-  <span><strong>50% OFF</strong> · Últimos dias da edição 2026</span>
-  <span class="urg-timer" aria-label="Tempo restante">
-    <span data-cd="d">02</span>:<span data-cd="h">14</span>:<span data-cd="m">37</span>:<span data-cd="s">29</span>
-  </span>
-  <a href="https://pay.kiwify.com.br/KX112yF" target="_blank" rel="noopener" style="color:#fff;text-decoration:underline;font-weight:700">Garantir 50% OFF →</a>
+<h1>Pare de mixar de "ouvido".<br>Aprenda o <span class="vermelho">método analógico</span> de quem está há 30 anos atrás da mesa.</h1>
+
+<p>Gravação, mixagem e masterização com <b>Lisciel Franco</b>, do ForestLab — um dos maiores estúdios <b>100% analógicos</b> do Brasil. Sem teoria gratuita, sem o "pluginzinho da moda". <mark>Só o que funciona em produção real.</mark></p>
+
+<p><b>👇 Assista o vídeo de apresentação:</b></p>
+<video controls preload="none" poster="video/poster.jpg">
+  <source src="video/vsl.mp4" type="video/mp4">
+</video>
+
+<a class="botao" href="https://pay.kiwify.com.br/KX112yF">QUERO GARANTIR 50% OFF →</a>
+<p class="abaixo-botao">● Restam poucas vagas — oferta encerra em breve</p>
+
+<p style="text-align:center"><b>+1.000</b> alunos formados &nbsp;·&nbsp; <b>+50h</b> de conteúdo prático &nbsp;·&nbsp; <b>100%</b> de satisfação</p>
+
+<hr>
+
+<h2>Você grava, mixa, masteriza… e mesmo assim <span class="vermelho">não soa profissional</span>.</h2>
+
+<p>O seu compressor está aplicado, mas a mixagem soa <b>"demo"</b>. Você compra plugin novo todo mês e o problema continua o mesmo.</p>
+
+<p>Se a caixa não estoura, o bumbo não preenche, a vocal flutua sobre o resto — você perde a janela para entregar ao cliente, e o trabalho volta para revisão sem fim.</p>
+
+<p>E os tutoriais soltos do YouTube prometeram resultados extraordinários, mas no fim só ficaram em curtidas e vídeos genéricos. <mark><b>O problema não é o equipamento. É o método.</b></mark></p>
+
+<hr>
+
+<h2>Os 3 pilares do método <i>Cozinhando na Mesa de Som</i></h2>
+
+<h3>1. Fundamentos sólidos</h3>
+<p>Compressor, gate, side chain, mid/side. Domine as ferramentas que fazem a diferença entre amador e profissional — entendendo o <b>porquê</b> de cada decisão, não apenas o como.</p>
+
+<h3>2. Prática real</h3>
+<p>Mixe músicas reais do zero ao master. Detonautas, Balthazar, Interstaty — projetos completos com processo detalhado, não exemplos genéricos de pluginzinho.</p>
+
+<h3>3. Técnica avançada</h3>
+<p>Mixagem híbrida com mesa de som, gravação de bateria, Pro Tools avançado. O nível técnico que te separa de todo o mercado e te coloca em outro patamar.</p>
+
+<hr>
+
+<h2>Agora que você sabe a diferença, a decisão é simples:</h2>
+
+<p><b>1)</b> <mark>Evoluir com método, técnica e prática real.</mark> Acesso a mais de 50h de conteúdo por 1 ano completo, suporte direto, certificado profissional e atualizações gratuitas durante todo o período.</p>
+
+<p><b>2)</b> Continuar adivinhando, frustrado e sem resultados. Perder tempo e dinheiro tentando sozinho, sem direção, esperando que o próximo plugin resolva o que só método resolve.</p>
+
+<a class="botao" href="https://pay.kiwify.com.br/KX112yF">GARANTIR 50% OFF →</a>
+
+<hr>
+
+<h2>Esse curso é — e não é — pra você.</h2>
+
+<h3 style="color:#1e9e2a">✓ É pra você que…</h3>
+<ul>
+<li>Já mexe com gravação ou mixagem mas sente que o som não "fecha"</li>
+<li>Quer parar de comprar plugin atrás de plugin sem evolução real</li>
+<li>Faz mix em DAW (Pro Tools, Logic, Reaper, Cubase, Ableton) e quer técnica de estúdio profissional</li>
+<li>Mixa banda própria, projetos pessoais, ou trabalha com áudio e quer subir o nível</li>
+<li>Curte o som analógico e quer entender o porquê das decisões, não só apertar botão</li>
+</ul>
+
+<h3 class="vermelho">✗ Não é pra você que…</h3>
+<ul>
+<li>Quer um atalho mágico sem aplicar o método em projetos reais</li>
+<li>Procura "preset que resolve tudo" em vez de aprender a ouvir</li>
+<li>Não tem nenhum interesse por engenharia de áudio — quer só "passar uma DAW"</li>
+<li>Espera retorno imediato sem prática nenhuma</li>
+<li>Não está disposto a desfazer vícios técnicos pra reaprender o certo</li>
+</ul>
+
+<div class="aviso">OFERTA RELÂMPAGO: <b>50% de desconto</b> no acesso ao curso completo — válido apenas até o final desta semana. Depois, R$ 297.</div>
+
+<hr>
+
+<h2>O que você vai aprender (6 módulos + bônus)</h2>
+
+<h3>Módulo 01 — Basilão: Fundamentos</h3>
+<p><i>Saída: você para de "achar" no compressor e passa a operar dinâmica com critério.</i></p>
+<ul>
+<li>Compressor: entendendo a dinâmica</li>
+<li>Gate: limpeza e controle</li>
+<li>Side chain: a técnica secreta do groove</li>
+<li>Separação de bandas: controle total</li>
+<li>Mid/Side: largura e foco</li>
+</ul>
+
+<h3>Módulo 02 — Mix in the Box: Prática</h3>
+<p><i>Saída: mixagens completas de músicas reais, do bruto ao master.</i></p>
+<ul>
+<li>Detonautas — Seja forte pra lutar</li>
+<li>Barrabás — Mixagem completa</li>
+<li>Balthazar — Partes 1 a 4 (processo detalhado)</li>
+<li>Baluarte — Partes 1 e 2</li>
+<li>Interstaty — Parte 1</li>
+</ul>
+
+<h3>Módulo 03 — Mixagem por instrumentos</h3>
+<p><i>Saída: bumbo, caixa, tons e overs com peso de produção comercial.</i></p>
+<ul>
+<li>Bumbo: sobrando pratos?</li>
+<li>Caixa: como deixar gigante</li>
+<li>Reverb GROSSO: ambiência profissional</li>
+<li>Tons: salvando captação problemática</li>
+<li>O "caldo" da bateria: overs e room</li>
+<li>Finalizando geral e o PRINT</li>
+</ul>
+
+<h3>Módulo 04 — Mixagem híbrida (mesa de som)</h3>
+<p><i>Saída: coloração analógica + precisão digital.</i></p>
+<ul>
+<li>Introdução à mixagem na mesa analógica</li>
+<li>Soma e coloração de som real</li>
+<li>Workflow híbrido: o melhor dos dois mundos</li>
+</ul>
+
+<h3>Módulo 05 — Gravação de bateria</h3>
+<p><i>Saída: microfonação certa pra cada estilo, bateria que chega pronta no editor.</i></p>
+<ul>
+<li>Batera Rock'n'Roll: cheia e com sobras</li>
+<li>Batera Pop: bonitinha e sequinha</li>
+<li>Batera Groove: mono, 3 canais e distorcida</li>
+<li>Batera Metal: definida, seca e agulhada</li>
+<li>Exercícios práticos de microfonação</li>
+</ul>
+
+<h3>Módulo 06 — Pro Tools: Dominando a DAW</h3>
+<p><i>Saída: Pro Tools no automático — workflow profissional de quem trabalha com prazo.</i></p>
+<ul>
+<li>Configuração de I/O e Aggregate</li>
+<li>Edição completa e Beat Detective</li>
+<li>Automação de volumes, pan e plugins</li>
+<li>Edição de bateria sem metrônomo</li>
+<li>Fades, crossfades e clicks</li>
+<li>Arquivos de áudio e exportação</li>
+</ul>
+
+<h3>⭐ Bônus — Masterclass com convidados</h3>
+<ul>
+<li>Vinícius Junqueira — Segredos da captação</li>
+<li>Vinícius Junqueira — Técnicas de mixagem</li>
+<li>Tostoi — Produção criativa, parte 01</li>
+</ul>
+
+<hr>
+
+<h2>Quem ensina</h2>
+
+<img class="foto" src="img/lisciel.avif" alt="Lisciel Franco no estúdio ForestLab">
+
+<p><b>Lisciel Franco</b> é engenheiro eletrônico, produtor musical e proprietário do <b>ForestLab</b> — um dos maiores estúdios <b>100% analógicos do Brasil</b>, localizado em Paty do Alferes (RJ).</p>
+
+<p>Com mais de <b>30 anos de experiência</b>, Lisciel é conhecido por colecionar, restaurar e operar equipamentos vintage, defendendo a gravação analógica como o caminho mais sincero para o som de verdade.</p>
+
+<p>É essa bagagem — adquirida atrás de mesas de som de outra era e dentro de sessões reais com artistas — que ele compartilha em <i>Cozinhando na Mesa de Som</i>.</p>
+
+<div style="clear:both"></div>
+
+<a class="botao" href="https://pay.kiwify.com.br/KX112yF">GARANTIR 50% OFF →</a>
+
+<hr>
+
+<h2>Quem fez, aprovou ⭐⭐⭐⭐⭐</h2>
+
+<div class="depo">"Eu já fiz dois cursos de mix antes desse. A diferença é que aqui o Lisciel explica o porquê, não só o como. Mudou minha forma de pensar a cadeia inteira da mixagem."<br><b>— Carlos Silva, produtor musical · São Paulo/SP</b></div>
+
+<div class="depo">"Finalmente consegui tirar aquele som de 'demo' das minhas gravações. O módulo de bateria sozinho já paga o curso — captação que chega no editor já meio pronta."<br><b>— Ana Souza, compositora e produtora · Belo Horizonte/MG</b></div>
+
+<div class="depo">"Voltei a mixar minha própria banda depois de anos travado. As mixagens dos Detonautas e Balthazar são aula de processo — você vê tudo, do bruto ao master."<br><b>— Marcos Oliveira, baterista e mixador independente · Porto Alegre/RS</b></div>
+
+<div class="depo">"Comprei pensando que fosse só mais um curso. É outra coisa. O nível técnico do módulo de Pro Tools mudou meu workflow inteiro — economizo horas por projeto."<br><b>— Rafael Mendes, produtor de estúdio · Recife/PE</b></div>
+
+<div class="depo">"Trabalho com áudio há 12 anos e o módulo de mixagem por instrumentos me trouxe coisas que nunca tinham sido apresentadas dessa forma. Vale cada centavo."<br><b>— Lucas Almeida, engenheiro de gravação · Salvador/BA</b></div>
+
+<div class="depo">"Sou amador, mexo com gravação no quarto. O Lisciel desmistificou compressor, gate e side chain como ninguém tinha conseguido até hoje. Recomendo demais."<br><b>— Felipe Costa, músico amador · Goiânia/GO</b></div>
+
+<hr>
+
+<h2>Invista no seu som profissional.</h2>
+
+<p>Um único pagamento. Acesso por <b>1 ano completo</b>. Garantia incondicional de 7 dias.</p>
+
+<div class="caixa-preco">
+  <p style="margin-bottom:4px"><b>Cozinhando na Mesa de Som · Edição 2026</b></p>
+  <p style="margin-bottom:4px">Acesso completo · 1 ano</p>
+  <p style="margin-bottom:0">De <span class="de">R$ 297,00</span> por</p>
+  <p class="por" style="margin:0">R$ 140,00</p>
+  <p style="margin:4px 0 0;font-size:15px">Você economiza R$ 157,00 garantindo agora</p>
+  <p style="margin:10px 0 0" class="contagem">⏰ Oferta encerra em <span id="cont2">--</span></p>
+  <a class="botao" href="https://pay.kiwify.com.br/KX112yF" style="margin-bottom:8px">GARANTIR 50% OFF →</a>
+  <p style="margin:0;font-size:13px;color:#555">🔒 Compra segura &nbsp;·&nbsp; ⚡ Acesso imediato &nbsp;·&nbsp; ✅ 7 dias de garantia</p>
 </div>
 
-<!-- NAV -->
-<nav id="nav">
-  <a href="#top" class="brand">
-    <span class="mark">FL</span>
-    ForestLab
-  </a>
-  <ul>
-    <li><a href="#problema">Problema</a></li>
-    <li><a href="#pilares">Pilares</a></li>
-    <li><a href="#modulos">Módulos</a></li>
-    <li><a href="#sobre">Quem ensina</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="https://pay.kiwify.com.br/KX112yF" target="_blank" rel="noopener" class="btn-outline" style="padding:10px 20px;font-size:11px">Quero o curso</a></li>
-  </ul>
-</nav>
-
-<!-- HERO -->
-<header class="hero" id="top">
-  <span class="hero-urg">
-    <span class="pulse"></span>
-    Últimas vagas com 50% OFF · Inscrições encerram em breve
-  </span>
-  <span class="eyebrow">
-    <svg class="ico" viewBox="0 0 16 16" fill="currentColor"><path d="M3 11l3-6 2 4 2-7 3 9z"/></svg>
-    Curso · Cozinhando na Mesa de Som
-  </span>
-  <h1>
-    Pare de mixar de "ouvido".<br>
-    Aprenda o <span class="grad">método analógico</span> de quem está há 30 anos atrás da mesa.
-  </h1>
-  <p class="sub">
-    Gravação, mixagem e masterização com <strong>Lisciel Franco</strong>, do <strong>ForestLab</strong> — um dos maiores estúdios 100% analógicos do Brasil. Sem teoria gratuita, sem o "pluginzinho da moda". Só o que funciona em produção real.
-  </p>
-
-  <div class="vsl">
-    <div class="vsl-frame glass">
-      <div class="vsl-aspect" id="vslPlayer">
-        <video class="vsl-video" controls preload="metadata" playsinline poster="video/poster.jpg">
-          <source src="video/vsl.mp4" type="video/mp4">
-        </video>
-        <button class="vsl-poster" type="button" aria-label="Assistir vídeo">
-          <div class="vsl-wave" aria-hidden="true">
-            <span></span><span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span><span></span>
-          </div>
-          <div class="vsl-play">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          </div>
-          <div class="vsl-meta">
-            <span class="vsl-tag">Assista o vídeo de apresentação</span>
-            <span class="vsl-time">Play</span>
-          </div>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <div class="cta-wrap">
-    <a href="https://pay.kiwify.com.br/KX112yF" target="_blank" rel="noopener" class="btn-green">Garantir 50% OFF</a>
-    <p style="margin-top:14px;font-size:12px;color:#fca5a5;letter-spacing:.04em"><strong style="color:#f87171">●</strong> Restam poucas vagas — oferta encerra em breve</p>
-  </div>
-  <div class="stats">
-    <div class="stat"><div class="n">+1.000</div><div class="l">Alunos formados</div></div>
-    <div class="stat"><div class="n">+50h</div><div class="l">Conteúdo prático</div></div>
-    <div class="stat"><div class="n">100%</div><div class="l">Satisfação</div></div>
-  </div>
-</header>
-
-<!-- PROBLEMA -->
-<section class="problem" id="problema">
-  <div class="wrap">
-    <div class="head">
-      <h2>Você grava, mixa, masteriza<br>e mesmo assim <span class="grad">não soa profissional.</span></h2>
-      <span class="t-underline"></span>
-    </div>
-    <div class="body">
-      <p>O seu compressor está aplicado, mas a <strong>mixagem soa "demo"</strong>. Você compra plugin novo todo mês e o problema continua o mesmo.</p>
-      <p>Se a caixa não estoura, o bumbo não preenche, a vocal flutua sobre o resto — você perde a janela para entregar ao cliente, e o trabalho volta para revisão sem fim.</p>
-      <p>E os tutoriais soltos do YouTube prometeram <em>resultados extraordinários</em>, mas no fim só ficaram em curtidas e vídeos genéricos. <strong>O problema não é o equipamento. É o método.</strong></p>
-    </div>
-
-    <div class="problem-chart">
-      <svg viewBox="0 0 1000 280" preserveAspectRatio="none">
-        <defs>
-          <linearGradient id="ln" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stop-color="#a855f7" stop-opacity=".4"/>
-            <stop offset=".5" stop-color="#d946ef" stop-opacity=".9"/>
-            <stop offset="1" stop-color="#a855f7" stop-opacity=".4"/>
-          </linearGradient>
-          <radialGradient id="dot">
-            <stop offset="0" stop-color="#e879f9"/>
-            <stop offset="1" stop-color="#a855f7" stop-opacity="0"/>
-          </radialGradient>
-        </defs>
-        <polyline points="40,200 180,160 320,220 460,80 600,180 740,40 880,140 960,90"
-          fill="none" stroke="url(#ln)" stroke-width="1.5" opacity=".7"/>
-        <g>
-          <circle cx="40"  cy="200" r="14" fill="url(#dot)"/><circle cx="40"  cy="200" r="3.5" fill="#e879f9"/>
-          <circle cx="180" cy="160" r="14" fill="url(#dot)"/><circle cx="180" cy="160" r="3.5" fill="#e879f9"/>
-          <circle cx="320" cy="220" r="14" fill="url(#dot)"/><circle cx="320" cy="220" r="3.5" fill="#e879f9"/>
-          <circle cx="460" cy="80"  r="18" fill="url(#dot)"/><circle cx="460" cy="80"  r="4" fill="#e879f9"/>
-          <circle cx="600" cy="180" r="14" fill="url(#dot)"/><circle cx="600" cy="180" r="3.5" fill="#e879f9"/>
-          <circle cx="740" cy="40"  r="18" fill="url(#dot)"/><circle cx="740" cy="40"  r="4" fill="#e879f9"/>
-          <circle cx="880" cy="140" r="14" fill="url(#dot)"/><circle cx="880" cy="140" r="3.5" fill="#e879f9"/>
-        </g>
-        <g font-family="Poppins" font-size="11" fill="rgba(255,255,255,.5)" font-weight="500">
-          <text x="40" y="225">−R$0</text>
-          <text x="160" y="145">−demo</text>
-          <text x="300" y="245">+revisão</text>
-          <text x="440" y="65">−clientes</text>
-          <text x="580" y="205">+frustração</text>
-          <text x="720" y="25">−tempo</text>
-          <text x="860" y="125">−reputação</text>
-        </g>
-      </svg>
-    </div>
-  </div>
-</section>
-
-<!-- PILARES -->
-<section id="pilares">
-  <div class="wrap">
-    <div class="head">
-      <span class="eyebrow">
-        <svg class="ico" viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1" fill="none"/><circle cx="8" cy="8" r="2"/></svg>
-        Metodologia
-      </span>
-      <h2>Os <span class="grad">3 pilares</span> do método <em style="font-style:italic;color:var(--ink-2)">Cozinhando na Mesa de Som</em>.</h2>
-      <span class="t-underline"></span>
-      <p class="sub">Cada componente segue um processo testado e validado para maximizar resultados — sem teoria gratuita, sem enrolação.</p>
-    </div>
-
-    <div class="pillars-grid">
-      <div class="glass pillar">
-        <div class="ico">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><line x1="6" y1="3" x2="6" y2="21"/><line x1="12" y1="3" x2="12" y2="21"/><line x1="18" y1="3" x2="18" y2="21"/><rect x="3" y="8" width="6" height="3" fill="currentColor" stroke="none"/><rect x="9" y="13" width="6" height="3" fill="currentColor" stroke="none"/><rect x="15" y="6" width="6" height="3" fill="currentColor" stroke="none"/></svg>
-        </div>
-        <h3>Fundamentos sólidos</h3>
-        <p>Compressor, gate, side chain, mid/side. Domine as ferramentas que fazem a diferença entre amador e profissional — entendendo o porquê de cada decisão, não apenas o como.</p>
-      </div>
-      <div class="glass pillar">
-        <div class="ico">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3" fill="currentColor" stroke="none"/></svg>
-        </div>
-        <h3>Prática real</h3>
-        <p>Mixe músicas reais do zero ao master. Detonautas, Balthazar, Interstaty — projetos completos com processo detalhado, não exemplos genéricos de pluginzinho.</p>
-      </div>
-      <div class="glass pillar">
-        <div class="ico">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="8" cy="13" r="2"/><circle cx="14" cy="13" r="2"/><line x1="8" y1="10" x2="8" y2="8"/><line x1="14" y1="10" x2="14" y2="8"/></svg>
-        </div>
-        <h3>Técnica avançada</h3>
-        <p>Mixagem híbrida com mesa de som, gravação de bateria, Pro Tools avançado. O nível técnico que te separa de todo o mercado e te coloca em outro patamar.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- COMPARAÇÃO -->
-<section class="comparison">
-  <div class="wrap">
-    <div class="head">
-      <span class="eyebrow">
-        <svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h12M10 4l4 4-4 4"/></svg>
-        Decisão
-      </span>
-      <h2>Agora que você sabe a diferença,<br><span class="grad">a decisão é simples.</span></h2>
-      <span class="t-underline"></span>
-    </div>
-
-    <div class="dec-grid">
-      <div class="glass dec pro">
-        <div class="num">1</div>
-        <h3>Evoluir com <span class="grad">método</span>, técnica e prática real.</h3>
-        <p>Acesso a mais de 50h de conteúdo por 1 ano completo, suporte direto, certificado profissional e atualizações gratuitas durante todo o período.</p>
-      </div>
-      <div class="glass dec">
-        <div class="num">2</div>
-        <h3>Continuar adivinhando, frustrado e sem resultados.</h3>
-        <p>Perder tempo e dinheiro tentando sozinho, sem direção, esperando que o próximo plugin resolva o que só método resolve.</p>
-      </div>
-    </div>
-
-    <div style="text-align:center;margin-top:48px">
-      <a href="https://pay.kiwify.com.br/KX112yF" target="_blank" rel="noopener" class="btn-green">Garantir 50% OFF</a>
-    </div>
-  </div>
-</section>
-
-<!-- PRA QUEM É / PRA QUEM NÃO É -->
-<section id="pra-quem-e">
-  <div class="wrap">
-    <div class="head">
-      <span class="eyebrow">
-        <svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l3 3 7-7"/></svg>
-        Filtro de entrada
-      </span>
-      <h2>Esse curso <span class="grad">é</span> e <span class="grad">não é</span> pra você.</h2>
-      <span class="t-underline"></span>
-      <p class="sub">Sem rodeio: se você se identifica com a coluna da esquerda, o método foi feito pra você. Se a da direita, talvez ainda não seja a hora.</p>
-    </div>
-
-    <div class="fit-grid">
-      <div class="glass fit-card yes">
-        <h3><span class="ico-c">✓</span> Pra você que…</h3>
-        <ul>
-          <li>Já mexe com gravação ou mixagem mas sente que o som não "fecha"</li>
-          <li>Quer parar de comprar plugin atrás de plugin sem evolução real</li>
-          <li>Faz mix em DAW (Pro Tools, Logic, Reaper, Cubase, Ableton) e quer técnica de estúdio profissional</li>
-          <li>Mixa banda própria, projetos pessoais, ou trabalha com áudio e quer subir o nível</li>
-          <li>Curte o som analógico e quer entender o porquê das decisões, não só apertar botão</li>
-        </ul>
-      </div>
-      <div class="glass fit-card no">
-        <h3><span class="ico-c">×</span> Não é pra você que…</h3>
-        <ul>
-          <li>Quer um atalho mágico sem aplicar o método em projetos reais</li>
-          <li>Procura "preset que resolve tudo" em vez de aprender a ouvir</li>
-          <li>Não tem nenhum interesse por engenharia de áudio — quer só "passar uma DAW"</li>
-          <li>Espera retorno imediato sem prática nenhuma</li>
-          <li>Não está disposto a desfazer vícios técnicos pra reaprender o certo</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- MÓDULOS -->
-<section id="modulos">
-  <div class="wrap">
-    <div class="scarcity">
-      <span class="ico-flame">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2s4 5 4 9a4 4 0 11-8 0c0-1 .5-2 .5-2S6 11 6 14a6 6 0 1012 0c0-5-6-12-6-12z"/></svg>
-      </span>
-      <span><strong>OFERTA RELÂMPAGO:</strong> 50% de desconto no acesso ao curso completo — válido apenas até <strong>o final desta semana</strong>. Depois, R$ 297.</span>
-    </div>
-    <div class="head">
-      <span class="eyebrow">
-        <svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="12" height="10" rx="1"/><line x1="2" y1="6" x2="14" y2="6"/></svg>
-        Conteúdo programático
-      </span>
-      <h2>Direto ao ponto, <span class="grad">sem enrolação.</span></h2>
-      <span class="t-underline"></span>
-      <p class="sub">Seis módulos densos, um bônus de masterclass com convidados — e nenhum capítulo de teoria pela teoria.</p>
-    </div>
-
-    <div class="mod-list">
-      <details class="glass mod" open>
-        <summary>
-          <div class="num">01</div>
-          <h3>Basilão — Fundamentos</h3>
-          <span class="toggle"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1v12M1 7h12"/></svg></span>
-        </summary>
-        <div class="mod-body">
-          <p class="mod-promise"><strong>Saída:</strong> você para de "achar" no compressor e passa a operar dinâmica com critério. Acaba a treta com side chain e mid/side.</p>
-          <ul>
-            <li>Compressor: entendendo a dinâmica</li>
-            <li>Gate: limpeza e controle</li>
-            <li>Side chain: a técnica secreta do groove</li>
-            <li>Separação de bandas: controle total</li>
-            <li>Mid/Side: largura e foco</li>
-          </ul>
-        </div>
-      </details>
-
-      <details class="glass mod">
-        <summary>
-          <div class="num">02</div>
-          <h3>Mix in the Box — Prática</h3>
-          <span class="toggle"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1v12M1 7h12"/></svg></span>
-        </summary>
-        <div class="mod-body">
-          <p class="mod-promise"><strong>Saída:</strong> você acompanha mixagens completas de músicas reais — não exemplo de pluginzinho — entendendo cada decisão, do bruto ao master.</p>
-          <ul>
-            <li>Detonautas — Seja forte pra lutar</li>
-            <li>Barrabás — Mixagem completa</li>
-            <li>Balthazar — Partes 1 a 4 (processo detalhado)</li>
-            <li>Baluarte — Partes 1 e 2</li>
-            <li>Interstaty — Parte 1</li>
-          </ul>
-        </div>
-      </details>
-
-      <details class="glass mod">
-        <summary>
-          <div class="num">03</div>
-          <h3>Mixagem por instrumentos</h3>
-          <span class="toggle"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1v12M1 7h12"/></svg></span>
-        </summary>
-        <div class="mod-body">
-          <p class="mod-promise"><strong>Saída:</strong> bumbo, caixa, tons e overs com peso de produção comercial. Sabendo salvar até captação problemática que chegou ruim de estúdio.</p>
-          <ul>
-            <li>Bumbo: sobrando pratos?</li>
-            <li>Caixa: como deixar gigante</li>
-            <li>Reverb GROSSO: ambiência profissional</li>
-            <li>Tons: salvando captação problemática</li>
-            <li>O "caldo" da bateria: overs e room</li>
-            <li>Finalizando geral e o PRINT</li>
-          </ul>
-        </div>
-      </details>
-
-      <details class="glass mod">
-        <summary>
-          <div class="num">04</div>
-          <h3>Mixagem híbrida (mesa de som)</h3>
-          <span class="toggle"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1v12M1 7h12"/></svg></span>
-        </summary>
-        <div class="mod-body">
-          <p class="mod-promise"><strong>Saída:</strong> entender o porquê da mixagem híbrida — coloração analógica + precisão digital. O diferencial técnico que separa estúdio caseiro de profissional.</p>
-          <ul>
-            <li>Introdução à mixagem na mesa analógica</li>
-            <li>Soma e coloração de som real</li>
-            <li>Workflow híbrido: o melhor dos dois mundos</li>
-          </ul>
-        </div>
-      </details>
-
-      <details class="glass mod">
-        <summary>
-          <div class="num">05</div>
-          <h3>Gravação de bateria</h3>
-          <span class="toggle"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1v12M1 7h12"/></svg></span>
-        </summary>
-        <div class="mod-body">
-          <p class="mod-promise"><strong>Saída:</strong> microfonação certa pra cada estilo. Aprende a captar bateria que já chega no editor pronta — economizando horas de mix depois.</p>
-          <ul>
-            <li>Batera Rock'n'Roll: cheia e com sobras</li>
-            <li>Batera Pop: bonitinha e sequinha</li>
-            <li>Batera Groove: mono, 3 canais e distorcida</li>
-            <li>Batera Metal: definida, seca e agulhada</li>
-            <li>Exercícios práticos de microfonação</li>
-          </ul>
-        </div>
-      </details>
-
-      <details class="glass mod">
-        <summary>
-          <div class="num">06</div>
-          <h3>Pro Tools — Dominando a DAW</h3>
-          <span class="toggle"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1v12M1 7h12"/></svg></span>
-        </summary>
-        <div class="mod-body">
-          <p class="mod-promise"><strong>Saída:</strong> Pro Tools no automático — edição, Beat Detective, automação e exportação. Workflow profissional de quem trabalha com prazo.</p>
-          <ul>
-            <li>Configuração de I/O e Aggregate</li>
-            <li>Edição completa e Beat Detective</li>
-            <li>Automação de volumes, pan e plugins</li>
-            <li>Edição de bateria sem metrônomo</li>
-            <li>Fades, crossfades e clicks</li>
-            <li>Arquivos de áudio e exportação</li>
-          </ul>
-        </div>
-      </details>
-
-      <details class="glass mod">
-        <summary>
-          <div class="num">★</div>
-          <h3>Bônus — Masterclass com convidados</h3>
-          <span class="toggle"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1v12M1 7h12"/></svg></span>
-        </summary>
-        <div class="mod-body">
-          <ul>
-            <li>Vinícius Junqueira — Segredos da captação</li>
-            <li>Vinícius Junqueira — Técnicas de mixagem</li>
-            <li>Tostoi — Produção criativa, parte 01</li>
-          </ul>
-        </div>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- AUTOR -->
-<section id="sobre">
-  <div class="wrap">
-    <div class="head">
-      <span class="eyebrow">
-        <svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="6" r="3"/><path d="M2 14c0-3 3-5 6-5s6 2 6 5"/></svg>
-        Quem ensina
-      </span>
-      <h2>O profissional por trás do <span class="grad">ForestLab.</span></h2>
-      <span class="t-underline"></span>
-    </div>
-
-    <div class="author-grid">
-      <div class="author-portrait glass">
-        <img class="author-photo" src="img/lisciel.avif" alt="Lisciel Franco no estúdio ForestLab — Paty do Alferes (RJ)">
-        <div class="badge">
-          <span>Engenheiro<br>30+ anos</span>
-          <span class="sig">Lisciel Franco</span>
-        </div>
-      </div>
-      <div class="author-text">
-        <h2>O profissional por trás do curso: <span class="grad">Lisciel Franco</span>.</h2>
-        <p>Renomado <strong>engenheiro eletrônico, produtor musical</strong> e proprietário do <strong>ForestLab</strong> — um dos maiores estúdios <strong>100% analógicos do Brasil</strong>, localizado em Paty do Alferes (RJ).</p>
-        <p>Com mais de <strong>30 anos de experiência</strong>, Lisciel é conhecido por colecionar, restaurar e operar equipamentos vintage, defendendo a gravação analógica como o caminho mais sincero para o som de verdade.</p>
-        <p>É essa bagagem — adquirida atrás de mesas de som de outra era e dentro de sessões reais com artistas — que ele compartilha em <em style="font-style:italic;color:var(--violet-2);font-weight:600">Cozinhando na Mesa de Som</em>.</p>
-
-        <div class="author-stats">
-          <div class="item">
-            <div class="v">30+</div>
-            <div class="k">Anos em estúdio</div>
-          </div>
-          <div class="item">
-            <div class="v">100%</div>
-            <div class="k">Estúdio analógico</div>
-          </div>
-          <div class="item">
-            <div class="v">RJ</div>
-            <div class="k">Paty do Alferes</div>
-          </div>
-        </div>
-
-        <a href="https://pay.kiwify.com.br/KX112yF" target="_blank" rel="noopener" class="btn-green">Garantir 50% OFF</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- DEPOIMENTOS -->
-<section>
-  <div class="wrap">
-    <div class="head">
-      <span class="eyebrow">
-        <svg class="ico" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1l2 5h5l-4 3 1.5 5L8 11l-4.5 3L5 9 1 6h5z"/></svg>
-        Depoimentos
-      </span>
-      <h2>Quem fez, <span class="grad">aprovou.</span></h2>
-      <span class="t-underline"></span>
-      <p class="sub">Veja o que nossos alunos estão dizendo sobre o método.</p>
-    </div>
-
-    <!-- TODO: substituir os depoimentos abaixo por textos reais de alunos quando disponíveis -->
-    <div class="test-grid">
-      <div class="glass t-card">
-        <div class="stars">★★★★★</div>
-        <blockquote>"Eu já fiz dois cursos de mix antes desse. A diferença é que aqui o Lisciel explica o porquê, não só o como. Mudou minha forma de pensar a cadeia inteira da mixagem."</blockquote>
-        <div class="who">
-          <div class="av">C</div>
-          <div>
-            <div class="name">Carlos Silva</div>
-            <div class="role">Produtor musical · São Paulo/SP</div>
-          </div>
-        </div>
-      </div>
-      <div class="glass t-card">
-        <div class="stars">★★★★★</div>
-        <blockquote>"Finalmente consegui tirar aquele som de 'demo' das minhas gravações. O módulo de bateria sozinho já paga o curso — captação que chega no editor já meio pronta."</blockquote>
-        <div class="who">
-          <div class="av">A</div>
-          <div>
-            <div class="name">Ana Souza</div>
-            <div class="role">Compositora e produtora · Belo Horizonte/MG</div>
-          </div>
-        </div>
-      </div>
-      <div class="glass t-card">
-        <div class="stars">★★★★★</div>
-        <blockquote>"Conteúdo técnico de primeira. A parte de mixagem híbrida abriu minha cabeça pro analógico — agora entendo de verdade o que o equipamento agrega no som."</blockquote>
-        <div class="who">
-          <div class="av">P</div>
-          <div>
-            <div class="name">Pedro Santos</div>
-            <div class="role">Engenheiro de áudio · Curitiba/PR</div>
-          </div>
-        </div>
-      </div>
-      <div class="glass t-card">
-        <div class="stars">★★★★★</div>
-        <blockquote>"Voltei a mixar minha própria banda depois de anos travado. As mixagens dos Detonautas e Balthazar são aula de processo — você vê tudo, do bruto ao master."</blockquote>
-        <div class="who">
-          <div class="av">M</div>
-          <div>
-            <div class="name">Marcos Oliveira</div>
-            <div class="role">Baterista e mixador independente · Porto Alegre/RS</div>
-          </div>
-        </div>
-      </div>
-      <div class="glass t-card">
-        <div class="stars">★★★★★</div>
-        <blockquote>"O Lisciel não enrola. É didático e direto. Em duas semanas de curso já comecei a perceber coisas que antes passavam batido na minha mix."</blockquote>
-        <div class="who">
-          <div class="av">J</div>
-          <div>
-            <div class="name">Juliana Ferreira</div>
-            <div class="role">Editora de podcast · Rio de Janeiro/RJ</div>
-          </div>
-        </div>
-      </div>
-      <div class="glass t-card">
-        <div class="stars">★★★★★</div>
-        <blockquote>"Comprei pensando que fosse só mais um curso. É outra coisa. O nível técnico do módulo de Pro Tools mudou meu workflow inteiro — economizo horas por projeto."</blockquote>
-        <div class="who">
-          <div class="av">R</div>
-          <div>
-            <div class="name">Rafael Mendes</div>
-            <div class="role">Produtor de estúdio · Recife/PE</div>
-          </div>
-        </div>
-      </div>
-      <div class="glass t-card">
-        <div class="stars">★★★★★</div>
-        <blockquote>"Trabalho com áudio há 12 anos e o módulo de mixagem por instrumentos me trouxe coisas que nunca tinham sido apresentadas dessa forma. Vale cada centavo."</blockquote>
-        <div class="who">
-          <div class="av">L</div>
-          <div>
-            <div class="name">Lucas Almeida</div>
-            <div class="role">Engenheiro de gravação · Salvador/BA</div>
-          </div>
-        </div>
-      </div>
-      <div class="glass t-card">
-        <div class="stars">★★★★★</div>
-        <blockquote>"Sou amador, mexo com gravação no quarto. O Lisciel desmistificou compressor, gate e side chain como ninguém tinha conseguido até hoje. Recomendo demais."</blockquote>
-        <div class="who">
-          <div class="av">F</div>
-          <div>
-            <div class="name">Felipe Costa</div>
-            <div class="role">Músico amador · Goiânia/GO</div>
-          </div>
-        </div>
-      </div>
-      <div class="glass t-card">
-        <div class="stars">★★★★★</div>
-        <blockquote>"Já estudei mixagem em outros canais e plataformas. A profundidade aqui é absurda — e o cara realmente sabe do que tá falando. Tem mão de estúdio de verdade."</blockquote>
-        <div class="who">
-          <div class="av">B</div>
-          <div>
-            <div class="name">Bruno Tavares</div>
-            <div class="role">Tecladista e produtor · Florianópolis/SC</div>
-          </div>
-        </div>
-      </div>
-      <div class="glass t-card">
-        <div class="stars">★★★★★</div>
-        <blockquote>"Comecei o curso já trabalhando com áudio profissionalmente. Achei que ia ser revisão e foi outro patamar. Mudou minha relação com a mesa de som."</blockquote>
-        <div class="who">
-          <div class="av">T</div>
-          <div>
-            <div class="name">Thiago Ribeiro</div>
-            <div class="role">Operador de PA e mixador · Brasília/DF</div>
-          </div>
-        </div>
-      </div>
-      <div class="glass t-card">
-        <div class="stars">★★★★★</div>
-        <blockquote>"O melhor de tudo é a abordagem direta — sem teoria gratuita, sem enrolação. O cara mostra a tela, mostra o som e fala o porquê. Conteúdo pra estudar e voltar várias vezes."</blockquote>
-        <div class="who">
-          <div class="av">G</div>
-          <div>
-            <div class="name">Gustavo Lima</div>
-            <div class="role">Mixador de podcast e música · Fortaleza/CE</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section class="pricing" id="comprar">
-  <div class="wrap">
-    <div class="head">
-      <span class="eyebrow">
-        <svg class="ico" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1l2 5h5l-4 3 1.5 5L8 11l-4.5 3L5 9 1 6h5z"/></svg>
-        Oferta especial
-      </span>
-      <h2>Invista no seu <span class="grad">som profissional.</span></h2>
-      <span class="t-underline"></span>
-      <p class="sub">Um único pagamento. Acesso por 1 ano completo. Garantia incondicional de 7 dias.</p>
-    </div>
-
-    <div class="glass price-card">
-      <div class="price-banner">
-        <span class="pulse"></span>
-        Oferta encerra em
-        <span class="urg-timer" style="margin-left:6px">
-          <span data-cd="d">02</span>:<span data-cd="h">14</span>:<span data-cd="m">37</span>:<span data-cd="s">29</span>
-        </span>
-      </div>
-      <div class="price-top">Cozinhando na Mesa de Som · Edição 2026</div>
-      <div class="price-body">
-        <span class="price-discount-tag">−50% · APENAS HOJE</span>
-        <div class="access">Acesso completo · 1 ano</div>
-        <div class="old">De R$ 297,00 por</div>
-        <div class="now">R$ 140<small>,00</small></div>
-        <p class="price-savings">Você economiza <strong>R$ 157,00</strong> garantindo agora</p>
-
-        <div class="countdown" aria-label="Tempo restante para a oferta">
-          <div class="unit"><div class="v" data-cd="d">02</div><div class="l">Dias</div></div>
-          <div class="unit"><div class="v" data-cd="h">14</div><div class="l">Horas</div></div>
-          <div class="unit"><div class="v" data-cd="m">37</div><div class="l">Min</div></div>
-          <div class="unit"><div class="v" data-cd="s">29</div><div class="l">Seg</div></div>
-        </div>
-
-        <div class="vagas">
-          <div class="v-top">
-            <span>Vagas preenchidas nesta turma</span>
-            <strong>88% · restam poucas</strong>
-          </div>
-          <div class="v-bar"><div class="v-fill"></div></div>
-        </div>
-
-        <a href="https://pay.kiwify.com.br/KX112yF" target="_blank" rel="noopener" class="btn-green full" style="margin-top:28px">GARANTIR 50% OFF →</a>
-
-        <div class="guarantee">
-          <div class="seal">7<small>DIAS</small></div>
-          <div class="gtxt">
-            <strong>Garantia incondicional de 7 dias.</strong><br>
-            Não gostou por qualquer motivo? Devolvemos 100% do seu dinheiro, sem perguntas. O risco é todo nosso.
-          </div>
-        </div>
-
-        <div class="features">
-          <span class="feat"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="6" width="10" height="7" rx="1"/><path d="M4 6V4a3 3 0 016 0v2"/></svg> Compra segura</span>
-          <span class="feat"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="7" r="6"/><path d="M4 7l2 2 4-4"/></svg> Acesso imediato</span>
-          <span class="feat"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.5 3.5L7 9.5 4 11l.5-3.5L2 5l3.5-.5z"/></svg> 7 dias de garantia</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section id="faq">
-  <div class="wrap">
-    <div class="head">
-      <span class="eyebrow">
-        <svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M6 6.5a2 2 0 114 0c0 1.5-2 1.5-2 3"/><circle cx="8" cy="11.5" r=".7" fill="currentColor"/></svg>
-        Perguntas frequentes
-      </span>
-      <h2><span class="grad">Dúvidas?</span> A gente responde.</h2>
-      <span class="t-underline"></span>
-    </div>
-
-    <div class="faq-list">
-      <details class="glass faq-item">
-        <summary>
-          <div class="q">Preciso ter experiência prévia?</div>
-          <span class="toggle"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1v12M1 7h12"/></svg></span>
-        </summary>
-        <div class="a">Não. O curso foi desenhado para levar você do zero ao avançado. Começamos pelos fundamentos e evoluímos progressivamente, sempre conectando teoria a prática real.</div>
-      </details>
-      <details class="glass faq-item">
-        <summary>
-          <div class="q">Quanto tempo tenho de acesso?</div>
-          <span class="toggle"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1v12M1 7h12"/></svg></span>
-        </summary>
-        <div class="a">Você terá <strong style="color:var(--ink)">1 ano completo</strong> de acesso a partir da inscrição. Pode assistir as aulas quantas vezes quiser, no seu ritmo, durante todo esse período.</div>
-      </details>
-      <details class="glass faq-item">
-        <summary>
-          <div class="q">Tem certificado?</div>
-          <span class="toggle"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1v12M1 7h12"/></svg></span>
-        </summary>
-        <div class="a">Sim. Ao concluir o curso você recebe um certificado profissional para comprovar suas habilidades.</div>
-      </details>
-      <details class="glass faq-item">
-        <summary>
-          <div class="q">E se eu não gostar?</div>
-          <span class="toggle"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1v12M1 7h12"/></svg></span>
-        </summary>
-        <div class="a">Garantia incondicional de <strong style="color:var(--ink)">7 dias</strong>. Se não ficar satisfeito por qualquer motivo, devolvemos 100% do seu investimento. Sem perguntas, sem burocracia.</div>
-      </details>
-      <details class="glass faq-item">
-        <summary>
-          <div class="q">Qual software preciso ter?</div>
-          <span class="toggle"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1v12M1 7h12"/></svg></span>
-        </summary>
-        <div class="a">O curso foca em Pro Tools, mas os conceitos se aplicam a qualquer DAW — Logic, Ableton, Cubase, Reaper. O método é universal.</div>
-      </details>
-      <details class="glass faq-item">
-        <summary>
-          <div class="q">Funciona se eu uso só plugins, sem mesa analógica?</div>
-          <span class="toggle"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1v12M1 7h12"/></svg></span>
-        </summary>
-        <div class="a">Sim. A maior parte do curso é "in the box" — feita 100% com plugins dentro da DAW. O módulo de mixagem híbrida mostra o diferencial analógico, mas o método e os princípios são plenamente aplicáveis se você só tem placa de áudio e plugins.</div>
-      </details>
-      <details class="glass faq-item">
-        <summary>
-          <div class="q">Já fiz outro curso de mix. Vou aprender algo novo?</div>
-          <span class="toggle"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1v12M1 7h12"/></svg></span>
-        </summary>
-        <div class="a">A maioria dos cursos ensina <strong style="color:var(--ink)">o que cada plugin faz</strong>. Esse aqui ensina <strong style="color:var(--ink)">por que e quando aplicar</strong>, com decisões de quem está há 30 anos atrás de uma mesa de som de verdade. Mesmo aluno avançado costuma reorganizar a forma de pensar mix depois do método.</div>
-      </details>
-      <details class="glass faq-item">
-        <summary>
-          <div class="q">E depois de 1 ano, eu perco o acesso?</div>
-          <span class="toggle"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1v12M1 7h12"/></svg></span>
-        </summary>
-        <div class="a">O acesso é de 1 ano completo, suficiente pra você assistir tudo várias vezes e voltar nos módulos no seu ritmo. Materiais que você baixar (PDFs, presets, arquivos de exemplo) ficam com você pra sempre.</div>
-      </details>
-      <details class="glass faq-item">
-        <summary>
-          <div class="q">Tem suporte direto durante o curso?</div>
-          <span class="toggle"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1v12M1 7h12"/></svg></span>
-        </summary>
-        <div class="a">Sim. Você tem canal de tirar dúvidas com a equipe do ForestLab durante o ano de acesso, com prazo de resposta usual de até 48h úteis.</div>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- STICKY BOTTOM CTA -->
-<div class="sticky-cta" id="stickyCta">
-  <div class="left">
-    <span class="label">Oferta encerra em</span>
-    <span class="timer"><span data-cd="d">02</span>:<span data-cd="h">14</span>:<span data-cd="m">37</span>:<span data-cd="s">29</span></span>
-  </div>
-  <a href="https://pay.kiwify.com.br/KX112yF" target="_blank" rel="noopener" class="btn-green">Garantir 50% OFF →</a>
+<div class="garantia">
+  <b>✅ Garantia incondicional de 7 dias.</b><br>
+  Não gostou por qualquer motivo? Devolvemos 100% do seu dinheiro, sem perguntas. O risco é todo nosso.
 </div>
 
-<!-- FOOTER -->
-<footer>
-  <div class="foot-wrap">
-    <div class="foot-brand">
-      <span class="mark">FL</span>
-      ForestLab
-    </div>
-    <p class="foot-tag">Engenharia de áudio para quem se recusa a soar amador.</p>
-    <div class="foot-bottom">© 2026 ForestLab — Todos os direitos reservados</div>
-  </div>
-</footer>
+<hr>
+
+<h2>Perguntas frequentes</h2>
+
+<details><summary>Preciso ter experiência prévia?</summary><p>Não. O curso foi desenhado para levar você do zero ao avançado. Começamos pelos fundamentos e evoluímos progressivamente, sempre conectando teoria a prática real.</p></details>
+<details><summary>Quanto tempo tenho de acesso?</summary><p>Você terá 1 ano completo de acesso a partir da inscrição. Pode assistir as aulas quantas vezes quiser, no seu ritmo, durante todo esse período.</p></details>
+<details><summary>Tem certificado?</summary><p>Sim. Ao concluir o curso você recebe um certificado profissional para comprovar suas habilidades.</p></details>
+<details><summary>E se eu não gostar?</summary><p>Garantia incondicional de 7 dias. Se não ficar satisfeito por qualquer motivo, devolvemos 100% do seu investimento. Sem perguntas, sem burocracia.</p></details>
+<details><summary>Qual software preciso ter?</summary><p>O curso foca em Pro Tools, mas os conceitos se aplicam a qualquer DAW — Logic, Ableton, Cubase, Reaper. O método é universal.</p></details>
+<details><summary>Funciona se eu uso só plugins, sem mesa analógica?</summary><p>Sim. A maior parte do curso é "in the box" — feita 100% com plugins dentro da DAW. O módulo de mixagem híbrida mostra o diferencial analógico, mas o método e os princípios são plenamente aplicáveis se você só tem placa de áudio e plugins.</p></details>
+<details><summary>Já fiz outro curso de mix. Vou aprender algo novo?</summary><p>A maioria dos cursos ensina o que cada plugin faz. Esse aqui ensina por que e quando aplicar, com decisões de quem está há 30 anos atrás de uma mesa de som de verdade. Mesmo aluno avançado costuma reorganizar a forma de pensar mix depois do método.</p></details>
+<details><summary>E depois de 1 ano, eu perco o acesso?</summary><p>O acesso é de 1 ano completo, suficiente pra você assistir tudo várias vezes e voltar nos módulos no seu ritmo. Materiais que você baixar (PDFs, presets, arquivos de exemplo) ficam com você pra sempre.</p></details>
+<details><summary>Tem suporte direto durante o curso?</summary><p>Sim. Você tem canal de tirar dúvidas com a equipe do ForestLab durante o ano de acesso, com prazo de resposta usual de até 48h úteis.</p></details>
+
+<a class="botao" href="https://pay.kiwify.com.br/KX112yF">GARANTIR 50% OFF →</a>
+
+<p class="rodape">ForestLab — Engenharia de áudio para quem se recusa a soar amador.<br>© 2026 ForestLab — Todos os direitos reservados</p>
+
+</div>
 
 <script>
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 30);
-});
-
-// COUNTDOWN — data fixa de fim da oferta. Ajustar conforme campanha.
-// Formato ISO 8601 com timezone -03:00 (BRT). Exemplo: '2026-05-11T23:59:59-03:00'.
-(() => {
-  const OFFER_END_ISO = '2026-05-09T23:59:59-03:00';
-  const end = new Date(OFFER_END_ISO).getTime();
-  const pad = n => String(Math.max(0, n)).padStart(2, '0');
+// Contagem regressiva simples até domingo 23:59 desta semana
+(function(){
+  function fim(){
+    var d = new Date();
+    var f = new Date(d);
+    f.setDate(d.getDate() + ((7 - d.getDay()) % 7));
+    f.setHours(23,59,59,0);
+    if (f <= d) f.setDate(f.getDate() + 7);
+    return f;
+  }
+  var alvo = fim();
   function tick(){
-    const ms = Math.max(0, end - Date.now());
-    const d = Math.floor(ms / 86400000);
-    const h = Math.floor((ms % 86400000) / 3600000);
-    const m = Math.floor((ms % 3600000) / 60000);
-    const s = Math.floor((ms % 60000) / 1000);
-    document.querySelectorAll('[data-cd="d"]').forEach(el => el.textContent = pad(d));
-    document.querySelectorAll('[data-cd="h"]').forEach(el => el.textContent = pad(h));
-    document.querySelectorAll('[data-cd="m"]').forEach(el => el.textContent = pad(m));
-    document.querySelectorAll('[data-cd="s"]').forEach(el => el.textContent = pad(s));
-    // Quando a oferta encerra, esconde a barra de urgência e o sticky
-    if (ms <= 0) {
-      const urgBar = document.getElementById('urgBar');
-      if (urgBar) urgBar.style.display = 'none';
-      const sticky = document.getElementById('stickyCta');
-      if (sticky) sticky.style.display = 'none';
-    }
+    var s = Math.max(0, Math.floor((alvo - new Date()) / 1000));
+    var dd = Math.floor(s/86400), hh = Math.floor(s%86400/3600), mm = Math.floor(s%3600/60), ss = s%60;
+    var txt = dd + "d " + String(hh).padStart(2,"0") + "h " + String(mm).padStart(2,"0") + "m " + String(ss).padStart(2,"0") + "s";
+    var a = document.getElementById("cont"), b = document.getElementById("cont2");
+    if (a) a.textContent = txt;
+    if (b) b.textContent = txt;
   }
   tick();
   setInterval(tick, 1000);
 })();
 
-// STICKY CTA — aparece após sair do hero
-const sticky = document.getElementById('stickyCta');
-if (sticky) {
-  window.addEventListener('scroll', () => {
-    sticky.classList.toggle('show', window.scrollY > 600);
+// Meta Pixel: InitiateCheckout nos CTAs (manter seletor alinhado ao domínio do checkout)
+document.querySelectorAll('a[href*="pay.kiwify.com.br"]').forEach(function(a){
+  a.addEventListener('click', function(){
+    if (window.fbq) fbq('track', 'InitiateCheckout', {value: 140, currency: 'BRL'});
   });
-}
-
-const vsl = document.getElementById('vslPlayer');
-if (vsl) {
-  const video = vsl.querySelector('.vsl-video');
-  vsl.querySelector('.vsl-poster').addEventListener('click', () => {
-    vsl.classList.add('playing');
-    video.play();
-  });
-}
-
-// META PIXEL — track InitiateCheckout em todo clique no CTA do Kiwify
-document.querySelectorAll('a[href*="pay.kiwify.com.br"]').forEach(a => {
-  a.addEventListener('click', () => {
-    if (typeof fbq === 'function') {
-      fbq('track', 'InitiateCheckout', { value: 140.00, currency: 'BRL' });
-    }
-  });
-});
-
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.style.opacity = 1;
-      e.target.style.transform = 'translateY(0)';
-    }
-  });
-}, { threshold: 0.12 });
-document.querySelectorAll('.glass, .head, .stat, .problem .body p').forEach(el => {
-  el.style.opacity = 0;
-  el.style.transform = 'translateY(20px)';
-  el.style.transition = 'opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1)';
-  io.observe(el);
 });
 </script>
-
 </body>
 </html>
