@@ -42,13 +42,15 @@ src="https://www.facebook.com/tr?id=409969490942884&ev=PageView&noscript=1"/></n
 body{
   font-family:'Inter',Arial,Helvetica,sans-serif;
   background:#ffffff;
-  color:#1f2937;
+  color:#374151;
   font-size:17px;
   line-height:1.7;
   margin:0;
+  -webkit-font-smoothing:antialiased;
 }
-.wrap{max-width:760px;margin:0 auto;padding:0 20px}
-section{padding:44px 0 8px}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+section{padding:60px 0}
+section.alt{background:#f8fafc;border-top:1px solid #eef2f6;border-bottom:1px solid #eef2f6}
 
 /* Barra do topo */
 .topbar{
@@ -57,42 +59,49 @@ section{padding:44px 0 8px}
   text-align:center;
   font-size:14px;
   font-weight:600;
-  padding:9px 14px;
+  padding:10px 14px;
 }
 .topbar b{font-weight:800}
 
 /* Tipografia */
 .eyebrow{
   display:block;
-  text-align:center;
+  width:fit-content;
+  margin:0 auto 18px;
   font-size:12px;
   font-weight:700;
-  letter-spacing:.14em;
+  letter-spacing:.12em;
   text-transform:uppercase;
-  color:#9ca3af;
-  margin-bottom:10px;
+  color:#15803d;
+  background:#f0fdf4;
+  border:1px solid #bbf7d0;
+  padding:5px 14px;
+  border-radius:99px;
 }
 h1{
-  font-size:34px;
-  line-height:1.22;
+  font-size:38px;
+  line-height:1.18;
+  letter-spacing:-.025em;
+  text-wrap:balance;
   font-weight:800;
   text-align:center;
-  color:#111827;
-  margin:26px 0 14px;
+  color:#0f172a;
+  margin:10px 0 16px;
 }
 h2{
-  font-size:26px;
-  line-height:1.3;
+  font-size:28px;
+  line-height:1.25;
+  letter-spacing:-.02em;
   font-weight:800;
   text-align:center;
-  color:#111827;
+  color:#0f172a;
   margin:0 0 18px;
 }
-h3{font-size:18px;font-weight:700;color:#111827;margin:0 0 6px}
+h3{font-size:18px;font-weight:700;color:#0f172a;margin:0 0 6px}
 p{margin:0 0 16px}
-.sub{text-align:center;color:#4b5563;max-width:640px;margin:0 auto 20px}
+.sub{text-align:center;color:#4b5563;max-width:640px;margin:0 auto 20px;font-size:18px}
 .destaque{color:#c62828}
-mark{background:#fef08a;padding:0 3px;border-radius:2px}
+mark{background:#fef08a;padding:1px 5px;border-radius:4px}
 a{color:#1d4ed8}
 
 /* Botão */
@@ -100,37 +109,47 @@ a{color:#1d4ed8}
   display:block;
   max-width:440px;
   margin:26px auto 8px;
-  background:#16a34a;
+  background:linear-gradient(180deg,#22c55e,#16a34a);
   color:#ffffff;
   font-size:19px;
   font-weight:800;
   text-align:center;
   text-decoration:none;
   padding:17px 24px;
-  border-radius:10px;
-  box-shadow:0 4px 14px rgba(22,163,74,.25);
+  border-radius:12px;
+  box-shadow:0 8px 20px -6px rgba(22,163,74,.5);
+  transition:transform .15s ease,box-shadow .15s ease;
 }
-.botao:hover{background:#15803d}
+.botao:hover{transform:translateY(-2px);box-shadow:0 12px 26px -6px rgba(22,163,74,.55)}
 .abaixo-botao{text-align:center;font-size:13.5px;color:#6b7280;margin:0 0 8px}
 
 /* Hero */
-.hero{padding-top:34px}
-video{width:100%;border-radius:12px;border:1px solid #e5e7eb;display:block;margin:20px 0 4px}
-.stats{
-  display:flex;justify-content:center;gap:34px;flex-wrap:wrap;
-  text-align:center;margin:26px 0 6px;
+.hero{padding:52px 0 56px;background:linear-gradient(180deg,#f8fafc 0%,#ffffff 70%)}
+video{
+  width:100%;border-radius:14px;display:block;margin:26px 0 0;
+  box-shadow:0 20px 45px -14px rgba(15,23,42,.3);
+  background:#0f172a;
 }
-.stats div{min-width:110px}
-.stats b{display:block;font-size:24px;font-weight:800;color:#111827}
-.stats span{font-size:13.5px;color:#6b7280}
+.stats{
+  display:flex;justify-content:center;
+  max-width:560px;margin:32px auto 0;
+  background:#fff;border:1px solid #e5e7eb;border-radius:14px;
+  box-shadow:0 4px 16px rgba(15,23,42,.06);
+  padding:18px 8px;text-align:center;
+}
+.stats div{flex:1;border-right:1px solid #eef2f6;padding:0 8px}
+.stats div:last-child{border-right:none}
+.stats b{display:block;font-size:26px;font-weight:800;color:#0f172a;line-height:1.2}
+.stats span{font-size:13px;color:#6b7280}
 
 /* Cards */
 .card{
   border:1px solid #e5e7eb;
-  border-radius:12px;
-  padding:20px 22px;
+  border-radius:14px;
+  padding:22px 24px;
   margin-bottom:14px;
   background:#fff;
+  box-shadow:0 1px 3px rgba(15,23,42,.05);
 }
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 @media(max-width:640px){.grid2{grid-template-columns:1fr}}
@@ -138,9 +157,10 @@ video{width:100%;border-radius:12px;border:1px solid #e5e7eb;display:block;margi
 /* Pilares */
 .pilar .num{
   display:inline-flex;align-items:center;justify-content:center;
-  width:32px;height:32px;border-radius:50%;
-  background:#111827;color:#fff;font-weight:800;font-size:15px;
-  margin-bottom:10px;
+  width:36px;height:36px;border-radius:50%;
+  background:linear-gradient(180deg,#22c55e,#16a34a);color:#fff;font-weight:800;font-size:16px;
+  box-shadow:0 4px 10px -3px rgba(22,163,74,.5);
+  margin-bottom:12px;
 }
 
 /* Listas ✓ / ✗ */
@@ -150,38 +170,46 @@ video{width:100%;border-radius:12px;border:1px solid #e5e7eb;display:block;margi
 .lista-check.nao li::before{content:"✗";position:absolute;left:0;color:#c62828;font-weight:800}
 
 /* Módulos */
-.modulo{border:1px solid #e5e7eb;border-radius:12px;padding:20px 22px;margin-bottom:12px}
+.modulo{
+  border:1px solid #e5e7eb;border-radius:14px;
+  padding:22px 24px;margin-bottom:12px;background:#fff;
+  box-shadow:0 1px 3px rgba(15,23,42,.05);
+}
 .modulo .tag{
-  display:inline-block;font-size:12px;font-weight:800;letter-spacing:.08em;
-  color:#16a34a;margin-bottom:4px;
+  display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.08em;
+  color:#15803d;background:#f0fdf4;border:1px solid #bbf7d0;
+  padding:3px 10px;border-radius:99px;margin-bottom:8px;
 }
 .modulo p.saida{font-size:14.5px;color:#6b7280;font-style:italic;margin-bottom:10px}
 .modulo ul{margin:0;padding-left:20px}
 .modulo li{margin-bottom:4px;font-size:15.5px}
 
 /* Quem ensina */
-.perfil{display:flex;gap:22px;align-items:flex-start}
-.perfil img{width:170px;border-radius:12px;border:1px solid #e5e7eb;flex-shrink:0}
+.perfil{display:flex;gap:24px;align-items:flex-start}
+.perfil img{width:170px;border-radius:14px;box-shadow:0 10px 24px -8px rgba(15,23,42,.25);flex-shrink:0}
 @media(max-width:560px){.perfil{flex-direction:column;align-items:center;text-align:left}.perfil img{width:200px}}
 
 /* Depoimentos */
 .depo{
-  border:1px solid #e5e7eb;border-radius:12px;
-  padding:16px 18px;background:#fafafa;
+  border:1px solid #e5e7eb;border-radius:14px;
+  padding:18px 20px;background:#fff;
   font-size:15px;
+  box-shadow:0 1px 3px rgba(15,23,42,.05);
 }
 .depo .estrelas{color:#f59e0b;font-size:13px;letter-spacing:2px;margin-bottom:6px}
-.depo b{display:block;margin-top:10px;color:#111827;font-size:13.5px}
+.depo b{display:block;margin-top:10px;color:#0f172a;font-size:13.5px}
 
 /* Preço */
 .caixa-preco{
-  border:2px solid #111827;
-  border-radius:16px;
-  padding:30px 26px;
+  border:1px solid #e5e7eb;
+  border-top:4px solid #16a34a;
+  border-radius:18px;
+  padding:32px 28px;
   text-align:center;
   max-width:480px;
   margin:26px auto;
-  box-shadow:0 8px 30px rgba(0,0,0,.07);
+  background:#fff;
+  box-shadow:0 20px 45px -18px rgba(15,23,42,.22);
 }
 .caixa-preco .selo{
   display:inline-block;background:#fef08a;color:#92400e;
@@ -189,7 +217,7 @@ video{width:100%;border-radius:12px;border:1px solid #e5e7eb;display:block;margi
   padding:4px 12px;border-radius:99px;margin-bottom:12px;
 }
 .caixa-preco .de{text-decoration:line-through;color:#9ca3af}
-.caixa-preco .por{font-size:46px;font-weight:800;color:#16a34a;line-height:1.1;margin:2px 0}
+.caixa-preco .por{font-size:48px;font-weight:800;color:#16a34a;line-height:1.1;margin:2px 0;letter-spacing:-.02em}
 .caixa-preco .econ{font-size:14px;color:#16a34a;font-weight:600}
 .caixa-preco .cont-box{font-size:14px;color:#c62828;font-weight:700;margin-top:12px}
 .caixa-preco .selos{font-size:13px;color:#6b7280;margin-top:10px}
@@ -197,27 +225,40 @@ video{width:100%;border-radius:12px;border:1px solid #e5e7eb;display:block;margi
 .garantia{
   display:flex;gap:16px;align-items:flex-start;
   border:1px solid #bbf7d0;background:#f0fdf4;
-  border-radius:12px;padding:18px 20px;
+  border-radius:14px;padding:20px 22px;
   max-width:560px;margin:0 auto;
 }
 .garantia .ico{font-size:28px;line-height:1}
 
 /* FAQ */
 details{
-  border:1px solid #e5e7eb;border-radius:10px;
-  margin-bottom:10px;padding:14px 18px;background:#fff;
+  border:1px solid #e5e7eb;border-radius:12px;
+  margin-bottom:10px;padding:16px 20px;background:#fff;
+  box-shadow:0 1px 3px rgba(15,23,42,.05);
 }
-summary{font-weight:700;cursor:pointer;color:#111827;font-size:15.5px}
+summary{
+  font-weight:700;cursor:pointer;color:#0f172a;font-size:15.5px;
+  list-style:none;position:relative;padding-right:30px;
+}
+summary::-webkit-details-marker{display:none}
+summary::after{
+  content:"+";position:absolute;right:2px;top:50%;transform:translateY(-50%);
+  font-size:22px;font-weight:400;color:#9ca3af;line-height:1;
+}
+details[open] summary::after{content:"–"}
 details p{margin:10px 0 2px;font-size:15px;color:#4b5563}
 
-hr{border:none;border-top:1px solid #eef0f3;margin:44px 0 0}
-.rodape{font-size:13px;color:#9ca3af;text-align:center;padding:34px 0 44px}
+.rodape{font-size:13px;color:#9ca3af;text-align:center;padding:38px 24px 46px;margin:0}
 .rodape b{color:#6b7280}
 
 @media(max-width:520px){
-  h1{font-size:27px}
-  h2{font-size:22px}
+  h1{font-size:29px}
+  h2{font-size:23px}
   body{font-size:16px}
+  section{padding:46px 0}
+  .hero{padding:38px 0 46px}
+  .stats b{font-size:21px}
+  .stats span{font-size:12px}
 }
 </style>
 </head>
@@ -225,283 +266,279 @@ hr{border:none;border-top:1px solid #eef0f3;margin:44px 0 0}
 
 <div class="topbar">🎚️ <b>Cozinhando na Mesa de Som</b> — Edição 2026 · Inscrições abertas</div>
 
-<div class="wrap">
-
 <!-- HERO -->
 <section class="hero">
-  <span class="eyebrow">Curso · Cozinhando na Mesa de Som</span>
-  <h1>Mix <span class="destaque">fria e embolada</span> não é falta de equipamento.<br>É falta de <mark>método</mark>.</h1>
-  <p class="sub">Aprenda na prática a colocar cada instrumento no lugar e entregar um som <mark>brutalmente definido</mark> — <b>usando o que você já tem</b>.</p>
+  <div class="wrap">
+    <span class="eyebrow">Curso · Cozinhando na Mesa de Som</span>
+    <h1>Mix <span class="destaque">fria e embolada</span> não é falta de equipamento.<br>É falta de <mark>método</mark>.</h1>
+    <p class="sub">Aprenda na prática a colocar cada instrumento no lugar e entregar um som <mark>brutalmente definido</mark> — <b>usando o que você já tem</b>.</p>
 
-  <video controls preload="none" poster="video/poster.jpg">
-    <source src="video/vsl.mp4" type="video/mp4">
-  </video>
+    <video controls preload="none" poster="video/poster.jpg">
+      <source src="video/vsl.mp4" type="video/mp4">
+    </video>
 
-
-  <div class="stats">
-    <div><b>+1.000</b><span>Alunos formados</span></div>
-    <div><b>+50h</b><span>Conteúdo prático</span></div>
-    <div><b>100%</b><span>Satisfação</span></div>
+    <div class="stats">
+      <div><b>+1.000</b><span>Alunos formados</span></div>
+      <div><b>+50h</b><span>Conteúdo prático</span></div>
+      <div><b>100%</b><span>Satisfação</span></div>
+    </div>
   </div>
 </section>
 
-<hr>
-
 <!-- PROBLEMA -->
-<section>
-  <span class="eyebrow">O problema</span>
-  <h2>Você grava, mixa, masteriza…<br>e mesmo assim <span class="destaque">não soa profissional</span>.</h2>
-  <p>O seu compressor está aplicado, mas a mixagem soa <b>"demo"</b>. Você compra plugin novo todo mês e o problema continua o mesmo.</p>
-  <p>Se a caixa não estoura, o bumbo não preenche, a vocal flutua sobre o resto — você perde a janela para entregar ao cliente, e o trabalho volta para revisão sem fim.</p>
-  <p>E os tutoriais soltos do YouTube prometeram resultados extraordinários, mas no fim só ficaram em curtidas e vídeos genéricos. <mark><b>O problema não é o equipamento. É o método.</b></mark></p>
+<section class="alt">
+  <div class="wrap">
+    <span class="eyebrow">O problema</span>
+    <h2>Você grava, mixa, masteriza…<br>e mesmo assim <span class="destaque">não soa profissional</span>.</h2>
+    <p>O seu compressor está aplicado, mas a mixagem soa <b>"demo"</b>. Você compra plugin novo todo mês e o problema continua o mesmo.</p>
+    <p>Se a caixa não estoura, o bumbo não preenche, a vocal flutua sobre o resto — você perde a janela para entregar ao cliente, e o trabalho volta para revisão sem fim.</p>
+    <p>E os tutoriais soltos do YouTube prometeram resultados extraordinários, mas no fim só ficaram em curtidas e vídeos genéricos. <mark><b>O problema não é o equipamento. É o método.</b></mark></p>
+  </div>
 </section>
-
-<hr>
 
 <!-- PILARES -->
 <section>
-  <span class="eyebrow">Metodologia</span>
-  <h2>Os 3 pilares do método</h2>
-  <div class="card pilar">
-    <span class="num">1</span>
-    <h3>Fundamentos sólidos</h3>
-    <p style="margin:0">Compressor, gate, side chain, mid/side. Domine as ferramentas que fazem a diferença entre amador e profissional — entendendo o <b>porquê</b> de cada decisão, não apenas o como.</p>
-  </div>
-  <div class="card pilar">
-    <span class="num">2</span>
-    <h3>Prática real</h3>
-    <p style="margin:0">Mixe músicas reais do zero ao master. Detonautas, Balthazar, Interstaty — projetos completos com processo detalhado, não exemplos genéricos de pluginzinho.</p>
-  </div>
-  <div class="card pilar">
-    <span class="num">3</span>
-    <h3>Técnica avançada</h3>
-    <p style="margin:0">Mixagem híbrida com mesa de som, gravação de bateria, Pro Tools avançado. O nível técnico que te separa de todo o mercado e te coloca em outro patamar.</p>
+  <div class="wrap">
+    <span class="eyebrow">Metodologia</span>
+    <h2>Os 3 pilares do método</h2>
+    <div class="card pilar">
+      <span class="num">1</span>
+      <h3>Fundamentos sólidos</h3>
+      <p style="margin:0">Compressor, gate, side chain, mid/side. Domine as ferramentas que fazem a diferença entre amador e profissional — entendendo o <b>porquê</b> de cada decisão, não apenas o como.</p>
+    </div>
+    <div class="card pilar">
+      <span class="num">2</span>
+      <h3>Prática real</h3>
+      <p style="margin:0">Mixe músicas reais do zero ao master. Detonautas, Balthazar, Interstaty — projetos completos com processo detalhado, não exemplos genéricos de pluginzinho.</p>
+    </div>
+    <div class="card pilar">
+      <span class="num">3</span>
+      <h3>Técnica avançada</h3>
+      <p style="margin:0">Mixagem híbrida com mesa de som, gravação de bateria, Pro Tools avançado. O nível técnico que te separa de todo o mercado e te coloca em outro patamar.</p>
+    </div>
   </div>
 </section>
-
-<hr>
 
 <!-- DECISÃO -->
-<section>
-  <span class="eyebrow">Decisão</span>
-  <h2>Agora que você sabe a diferença,<br>a decisão é simples.</h2>
-  <div class="card" style="border-color:#bbf7d0;background:#f0fdf4">
-    <h3 style="color:#15803d">1 · Evoluir com método, técnica e prática real</h3>
-    <p style="margin:0">Acesso a mais de 50h de conteúdo por 1 ano completo, suporte direto, certificado profissional e atualizações gratuitas durante todo o período.</p>
-  </div>
-  <div class="card" style="border-color:#fecaca;background:#fef2f2">
-    <h3 style="color:#b91c1c">2 · Continuar adivinhando, frustrado e sem resultados</h3>
-    <p style="margin:0">Perder tempo e dinheiro tentando sozinho, sem direção, esperando que o próximo plugin resolva o que só método resolve.</p>
+<section class="alt">
+  <div class="wrap">
+    <span class="eyebrow">Decisão</span>
+    <h2>Agora que você sabe a diferença,<br>a decisão é simples.</h2>
+    <div class="card" style="border-color:#bbf7d0;background:#f0fdf4">
+      <h3 style="color:#15803d">1 · Evoluir com método, técnica e prática real</h3>
+      <p style="margin:0">Acesso a mais de 50h de conteúdo por 1 ano completo, suporte direto, certificado profissional e atualizações gratuitas durante todo o período.</p>
+    </div>
+    <div class="card" style="border-color:#fecaca;background:#fef2f2">
+      <h3 style="color:#b91c1c">2 · Continuar adivinhando, frustrado e sem resultados</h3>
+      <p style="margin:0">Perder tempo e dinheiro tentando sozinho, sem direção, esperando que o próximo plugin resolva o que só método resolve.</p>
+    </div>
   </div>
 </section>
-
-<hr>
 
 <!-- FILTRO -->
 <section>
-  <span class="eyebrow">Filtro de entrada</span>
-  <h2>Esse curso é — e não é — pra você.</h2>
-  <div class="grid2">
-    <div class="card">
-      <h3 style="color:#15803d">✓ É pra você que…</h3>
-      <ul class="lista-check sim">
-        <li>Já mexe com gravação ou mixagem mas sente que o som não "fecha"</li>
-        <li>Quer parar de comprar plugin atrás de plugin sem evolução real</li>
-        <li>Faz mix em DAW (Pro Tools, Logic, Reaper, Cubase, Ableton) e quer técnica de estúdio profissional</li>
-        <li>Mixa banda própria, projetos pessoais, ou trabalha com áudio e quer subir o nível</li>
-        <li>Curte o som analógico e quer entender o porquê das decisões</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3 style="color:#b91c1c">✗ Não é pra você que…</h3>
-      <ul class="lista-check nao">
-        <li>Quer um atalho mágico sem aplicar o método em projetos reais</li>
-        <li>Procura "preset que resolve tudo" em vez de aprender a ouvir</li>
-        <li>Não tem interesse por engenharia de áudio — quer só "passar uma DAW"</li>
-        <li>Espera retorno imediato sem prática nenhuma</li>
-        <li>Não está disposto a desfazer vícios técnicos pra reaprender o certo</li>
-      </ul>
+  <div class="wrap">
+    <span class="eyebrow">Filtro de entrada</span>
+    <h2>Esse curso é — e não é — pra você.</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3 style="color:#15803d">✓ É pra você que…</h3>
+        <ul class="lista-check sim">
+          <li>Já mexe com gravação ou mixagem mas sente que o som não "fecha"</li>
+          <li>Quer parar de comprar plugin atrás de plugin sem evolução real</li>
+          <li>Faz mix em DAW (Pro Tools, Logic, Reaper, Cubase, Ableton) e quer técnica de estúdio profissional</li>
+          <li>Mixa banda própria, projetos pessoais, ou trabalha com áudio e quer subir o nível</li>
+          <li>Curte o som analógico e quer entender o porquê das decisões</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="color:#b91c1c">✗ Não é pra você que…</h3>
+        <ul class="lista-check nao">
+          <li>Quer um atalho mágico sem aplicar o método em projetos reais</li>
+          <li>Procura "preset que resolve tudo" em vez de aprender a ouvir</li>
+          <li>Não tem interesse por engenharia de áudio — quer só "passar uma DAW"</li>
+          <li>Espera retorno imediato sem prática nenhuma</li>
+          <li>Não está disposto a desfazer vícios técnicos pra reaprender o certo</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
-
-<hr>
 
 <!-- MÓDULOS -->
-<section>
-  <span class="eyebrow">Conteúdo programático</span>
-  <h2>Direto ao ponto, sem enrolação.</h2>
-  <p class="sub">Seis módulos densos, um bônus de masterclass com convidados — e nenhum capítulo de teoria pela teoria.</p>
+<section class="alt">
+  <div class="wrap">
+    <span class="eyebrow">Conteúdo programático</span>
+    <h2>Direto ao ponto, sem enrolação.</h2>
+    <p class="sub">Seis módulos densos, um bônus de masterclass com convidados — e nenhum capítulo de teoria pela teoria.</p>
 
-  <div class="modulo">
-    <span class="tag">MÓDULO 01</span>
-    <h3>Basilão — Fundamentos</h3>
-    <p class="saida">Saída: você para de "achar" no compressor e passa a operar dinâmica com critério.</p>
-    <ul>
-      <li>Compressor: entendendo a dinâmica</li>
-      <li>Gate: limpeza e controle</li>
-      <li>Side chain: a técnica secreta do groove</li>
-      <li>Separação de bandas: controle total</li>
-      <li>Mid/Side: largura e foco</li>
-    </ul>
-  </div>
+    <div class="modulo">
+      <span class="tag">MÓDULO 01</span>
+      <h3>Basilão — Fundamentos</h3>
+      <p class="saida">Saída: você para de "achar" no compressor e passa a operar dinâmica com critério.</p>
+      <ul>
+        <li>Compressor: entendendo a dinâmica</li>
+        <li>Gate: limpeza e controle</li>
+        <li>Side chain: a técnica secreta do groove</li>
+        <li>Separação de bandas: controle total</li>
+        <li>Mid/Side: largura e foco</li>
+      </ul>
+    </div>
 
-  <div class="modulo">
-    <span class="tag">MÓDULO 02</span>
-    <h3>Mix in the Box — Prática</h3>
-    <p class="saida">Saída: mixagens completas de músicas reais, do bruto ao master.</p>
-    <ul>
-      <li>Detonautas — Seja forte pra lutar</li>
-      <li>Barrabás — Mixagem completa</li>
-      <li>Balthazar — Partes 1 a 4 (processo detalhado)</li>
-      <li>Baluarte — Partes 1 e 2</li>
-      <li>Interstaty — Parte 1</li>
-    </ul>
-  </div>
+    <div class="modulo">
+      <span class="tag">MÓDULO 02</span>
+      <h3>Mix in the Box — Prática</h3>
+      <p class="saida">Saída: mixagens completas de músicas reais, do bruto ao master.</p>
+      <ul>
+        <li>Detonautas — Seja forte pra lutar</li>
+        <li>Barrabás — Mixagem completa</li>
+        <li>Balthazar — Partes 1 a 4 (processo detalhado)</li>
+        <li>Baluarte — Partes 1 e 2</li>
+        <li>Interstaty — Parte 1</li>
+      </ul>
+    </div>
 
-  <div class="modulo">
-    <span class="tag">MÓDULO 03</span>
-    <h3>Mixagem por instrumentos</h3>
-    <p class="saida">Saída: bumbo, caixa, tons e overs com peso de produção comercial.</p>
-    <ul>
-      <li>Bumbo: sobrando pratos?</li>
-      <li>Caixa: como deixar gigante</li>
-      <li>Reverb GROSSO: ambiência profissional</li>
-      <li>Tons: salvando captação problemática</li>
-      <li>O "caldo" da bateria: overs e room</li>
-      <li>Finalizando geral e o PRINT</li>
-    </ul>
-  </div>
+    <div class="modulo">
+      <span class="tag">MÓDULO 03</span>
+      <h3>Mixagem por instrumentos</h3>
+      <p class="saida">Saída: bumbo, caixa, tons e overs com peso de produção comercial.</p>
+      <ul>
+        <li>Bumbo: sobrando pratos?</li>
+        <li>Caixa: como deixar gigante</li>
+        <li>Reverb GROSSO: ambiência profissional</li>
+        <li>Tons: salvando captação problemática</li>
+        <li>O "caldo" da bateria: overs e room</li>
+        <li>Finalizando geral e o PRINT</li>
+      </ul>
+    </div>
 
-  <div class="modulo">
-    <span class="tag">MÓDULO 04</span>
-    <h3>Mixagem híbrida (mesa de som)</h3>
-    <p class="saida">Saída: coloração analógica + precisão digital.</p>
-    <ul>
-      <li>Introdução à mixagem na mesa analógica</li>
-      <li>Soma e coloração de som real</li>
-      <li>Workflow híbrido: o melhor dos dois mundos</li>
-    </ul>
-  </div>
+    <div class="modulo">
+      <span class="tag">MÓDULO 04</span>
+      <h3>Mixagem híbrida (mesa de som)</h3>
+      <p class="saida">Saída: coloração analógica + precisão digital.</p>
+      <ul>
+        <li>Introdução à mixagem na mesa analógica</li>
+        <li>Soma e coloração de som real</li>
+        <li>Workflow híbrido: o melhor dos dois mundos</li>
+      </ul>
+    </div>
 
-  <div class="modulo">
-    <span class="tag">MÓDULO 05</span>
-    <h3>Gravação de bateria</h3>
-    <p class="saida">Saída: microfonação certa pra cada estilo, bateria que chega pronta no editor.</p>
-    <ul>
-      <li>Batera Rock'n'Roll: cheia e com sobras</li>
-      <li>Batera Pop: bonitinha e sequinha</li>
-      <li>Batera Groove: mono, 3 canais e distorcida</li>
-      <li>Batera Metal: definida, seca e agulhada</li>
-      <li>Exercícios práticos de microfonação</li>
-    </ul>
-  </div>
+    <div class="modulo">
+      <span class="tag">MÓDULO 05</span>
+      <h3>Gravação de bateria</h3>
+      <p class="saida">Saída: microfonação certa pra cada estilo, bateria que chega pronta no editor.</p>
+      <ul>
+        <li>Batera Rock'n'Roll: cheia e com sobras</li>
+        <li>Batera Pop: bonitinha e sequinha</li>
+        <li>Batera Groove: mono, 3 canais e distorcida</li>
+        <li>Batera Metal: definida, seca e agulhada</li>
+        <li>Exercícios práticos de microfonação</li>
+      </ul>
+    </div>
 
-  <div class="modulo">
-    <span class="tag">MÓDULO 06</span>
-    <h3>Pro Tools — Dominando a DAW</h3>
-    <p class="saida">Saída: Pro Tools no automático — workflow profissional de quem trabalha com prazo.</p>
-    <ul>
-      <li>Configuração de I/O e Aggregate</li>
-      <li>Edição completa e Beat Detective</li>
-      <li>Automação de volumes, pan e plugins</li>
-      <li>Edição de bateria sem metrônomo</li>
-      <li>Fades, crossfades e clicks</li>
-      <li>Arquivos de áudio e exportação</li>
-    </ul>
-  </div>
+    <div class="modulo">
+      <span class="tag">MÓDULO 06</span>
+      <h3>Pro Tools — Dominando a DAW</h3>
+      <p class="saida">Saída: Pro Tools no automático — workflow profissional de quem trabalha com prazo.</p>
+      <ul>
+        <li>Configuração de I/O e Aggregate</li>
+        <li>Edição completa e Beat Detective</li>
+        <li>Automação de volumes, pan e plugins</li>
+        <li>Edição de bateria sem metrônomo</li>
+        <li>Fades, crossfades e clicks</li>
+        <li>Arquivos de áudio e exportação</li>
+      </ul>
+    </div>
 
-  <div class="modulo" style="border-color:#fde68a;background:#fffbeb">
-    <span class="tag" style="color:#b45309">⭐ BÔNUS</span>
-    <h3>Masterclass com convidados</h3>
-    <ul>
-      <li>Vinícius Junqueira — Segredos da captação</li>
-      <li>Vinícius Junqueira — Técnicas de mixagem</li>
-      <li>Tostoi — Produção criativa, parte 01</li>
-    </ul>
+    <div class="modulo" style="border-color:#fde68a;background:#fffbeb">
+      <span class="tag" style="color:#b45309;background:#fef3c7;border-color:#fde68a">⭐ BÔNUS</span>
+      <h3>Masterclass com convidados</h3>
+      <ul>
+        <li>Vinícius Junqueira — Segredos da captação</li>
+        <li>Vinícius Junqueira — Técnicas de mixagem</li>
+        <li>Tostoi — Produção criativa, parte 01</li>
+      </ul>
+    </div>
   </div>
 </section>
-
-<hr>
 
 <!-- QUEM ENSINA -->
 <section>
-  <span class="eyebrow">Quem ensina</span>
-  <h2>O profissional por trás do ForestLab</h2>
-  <div class="perfil">
-    <img src="img/lisciel.avif" alt="Lisciel Franco no estúdio ForestLab">
-    <div>
-      <p><b>Lisciel Franco</b> é engenheiro eletrônico, produtor musical e proprietário do <b>ForestLab</b> — um dos maiores estúdios <b>100% analógicos do Brasil</b>, localizado em Paty do Alferes (RJ).</p>
-      <p>Com mais de <b>30 anos de experiência</b>, é conhecido por colecionar, restaurar e operar equipamentos vintage, defendendo a gravação analógica como o caminho mais sincero para o som de verdade.</p>
-      <p style="margin:0">É essa bagagem — adquirida atrás de mesas de som de outra era e dentro de sessões reais com artistas — que ele compartilha em <i>Cozinhando na Mesa de Som</i>.</p>
+  <div class="wrap">
+    <span class="eyebrow">Quem ensina</span>
+    <h2>O profissional por trás do ForestLab</h2>
+    <div class="perfil">
+      <img src="img/lisciel.avif" alt="Lisciel Franco no estúdio ForestLab">
+      <div>
+        <p><b>Lisciel Franco</b> é engenheiro eletrônico, produtor musical e proprietário do <b>ForestLab</b> — um dos maiores estúdios <b>100% analógicos do Brasil</b>, localizado em Paty do Alferes (RJ).</p>
+        <p>Com mais de <b>30 anos de experiência</b>, é conhecido por colecionar, restaurar e operar equipamentos vintage, defendendo a gravação analógica como o caminho mais sincero para o som de verdade.</p>
+        <p style="margin:0">É essa bagagem — adquirida atrás de mesas de som de outra era e dentro de sessões reais com artistas — que ele compartilha em <i>Cozinhando na Mesa de Som</i>.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<hr>
-
 <!-- DEPOIMENTOS -->
-<section>
-  <span class="eyebrow">Depoimentos</span>
-  <h2>Quem fez, aprovou.</h2>
-  <div class="grid2">
-    <div class="depo"><div class="estrelas">★★★★★</div>"Eu já fiz dois cursos de mix antes desse. A diferença é que aqui o Lisciel explica o porquê, não só o como. Mudou minha forma de pensar a cadeia inteira da mixagem."<b>Carlos Silva · Produtor musical · São Paulo/SP</b></div>
-    <div class="depo"><div class="estrelas">★★★★★</div>"Finalmente consegui tirar aquele som de 'demo' das minhas gravações. O módulo de bateria sozinho já paga o curso."<b>Ana Souza · Compositora e produtora · Belo Horizonte/MG</b></div>
-    <div class="depo"><div class="estrelas">★★★★★</div>"Voltei a mixar minha própria banda depois de anos travado. As mixagens dos Detonautas e Balthazar são aula de processo — você vê tudo, do bruto ao master."<b>Marcos Oliveira · Baterista e mixador · Porto Alegre/RS</b></div>
-    <div class="depo"><div class="estrelas">★★★★★</div>"Comprei pensando que fosse só mais um curso. É outra coisa. O módulo de Pro Tools mudou meu workflow inteiro — economizo horas por projeto."<b>Rafael Mendes · Produtor de estúdio · Recife/PE</b></div>
-    <div class="depo"><div class="estrelas">★★★★★</div>"Trabalho com áudio há 12 anos e o módulo de mixagem por instrumentos me trouxe coisas que nunca tinham sido apresentadas dessa forma. Vale cada centavo."<b>Lucas Almeida · Engenheiro de gravação · Salvador/BA</b></div>
-    <div class="depo"><div class="estrelas">★★★★★</div>"Sou amador, mexo com gravação no quarto. O Lisciel desmistificou compressor, gate e side chain como ninguém. Recomendo demais."<b>Felipe Costa · Músico amador · Goiânia/GO</b></div>
+<section class="alt">
+  <div class="wrap">
+    <span class="eyebrow">Depoimentos</span>
+    <h2>Quem fez, aprovou.</h2>
+    <div class="grid2">
+      <div class="depo"><div class="estrelas">★★★★★</div>"Eu já fiz dois cursos de mix antes desse. A diferença é que aqui o Lisciel explica o porquê, não só o como. Mudou minha forma de pensar a cadeia inteira da mixagem."<b>Carlos Silva · Produtor musical · São Paulo/SP</b></div>
+      <div class="depo"><div class="estrelas">★★★★★</div>"Finalmente consegui tirar aquele som de 'demo' das minhas gravações. O módulo de bateria sozinho já paga o curso."<b>Ana Souza · Compositora e produtora · Belo Horizonte/MG</b></div>
+      <div class="depo"><div class="estrelas">★★★★★</div>"Voltei a mixar minha própria banda depois de anos travado. As mixagens dos Detonautas e Balthazar são aula de processo — você vê tudo, do bruto ao master."<b>Marcos Oliveira · Baterista e mixador · Porto Alegre/RS</b></div>
+      <div class="depo"><div class="estrelas">★★★★★</div>"Comprei pensando que fosse só mais um curso. É outra coisa. O módulo de Pro Tools mudou meu workflow inteiro — economizo horas por projeto."<b>Rafael Mendes · Produtor de estúdio · Recife/PE</b></div>
+      <div class="depo"><div class="estrelas">★★★★★</div>"Trabalho com áudio há 12 anos e o módulo de mixagem por instrumentos me trouxe coisas que nunca tinham sido apresentadas dessa forma. Vale cada centavo."<b>Lucas Almeida · Engenheiro de gravação · Salvador/BA</b></div>
+      <div class="depo"><div class="estrelas">★★★★★</div>"Sou amador, mexo com gravação no quarto. O Lisciel desmistificou compressor, gate e side chain como ninguém. Recomendo demais."<b>Felipe Costa · Músico amador · Goiânia/GO</b></div>
+    </div>
   </div>
 </section>
-
-<hr>
 
 <!-- OFERTA -->
 <section>
-  <span class="eyebrow">Inscrição</span>
-  <h2>Invista no seu som profissional.</h2>
-  <p class="sub">Um único pagamento. Acesso por <b>1 ano completo</b>. Garantia incondicional de 7 dias.</p>
+  <div class="wrap">
+    <span class="eyebrow">Inscrição</span>
+    <h2>Invista no seu som profissional.</h2>
+    <p class="sub">Um único pagamento. Acesso por <b>1 ano completo</b>. Garantia incondicional de 7 dias.</p>
 
-  <div class="caixa-preco">
-    <p style="margin:0 0 2px"><b>Cozinhando na Mesa de Som</b></p>
-    <p style="margin:0;font-size:14.5px;color:#6b7280">Acesso completo · 1 ano</p>
-    <p style="margin:14px 0 0">Pagamento único de</p>
-    <p class="por">R$ 290,00</p>
-    <a class="botao" href="https://pay.kiwify.com.br/Lv593Ka" style="margin:16px auto 10px">QUERO ENTRAR NO CURSO →</a>
-    <p class="selos">🔒 Compra segura · ⚡ Acesso imediato · ✅ 7 dias de garantia</p>
-  </div>
+    <div class="caixa-preco">
+      <p style="margin:0 0 2px"><b>Cozinhando na Mesa de Som</b></p>
+      <p style="margin:0;font-size:14.5px;color:#6b7280">Acesso completo · 1 ano</p>
+      <p style="margin:14px 0 0">Pagamento único de</p>
+      <p class="por">R$ 290,00</p>
+      <a class="botao" href="https://pay.kiwify.com.br/Lv593Ka" style="margin:16px auto 10px">QUERO ENTRAR NO CURSO →</a>
+      <p class="selos">🔒 Compra segura · ⚡ Acesso imediato · ✅ 7 dias de garantia</p>
+    </div>
 
-  <div class="garantia">
-    <div class="ico">🛡️</div>
-    <div>
-      <b>Garantia incondicional de 7 dias.</b><br>
-      Não gostou por qualquer motivo? Devolvemos 100% do seu dinheiro, sem perguntas. O risco é todo nosso.
+    <div class="garantia">
+      <div class="ico">🛡️</div>
+      <div>
+        <b>Garantia incondicional de 7 dias.</b><br>
+        Não gostou por qualquer motivo? Devolvemos 100% do seu dinheiro, sem perguntas. O risco é todo nosso.
+      </div>
     </div>
   </div>
 </section>
 
-<hr>
-
 <!-- FAQ -->
-<section>
-  <span class="eyebrow">Perguntas frequentes</span>
-  <h2>Dúvidas? A gente responde.</h2>
+<section class="alt">
+  <div class="wrap">
+    <span class="eyebrow">Perguntas frequentes</span>
+    <h2>Dúvidas? A gente responde.</h2>
 
-  <details><summary>Preciso ter experiência prévia?</summary><p>Não. O curso foi desenhado para levar você do zero ao avançado. Começamos pelos fundamentos e evoluímos progressivamente, sempre conectando teoria a prática real.</p></details>
-  <details><summary>Quanto tempo tenho de acesso?</summary><p>Você terá 1 ano completo de acesso a partir da inscrição. Pode assistir as aulas quantas vezes quiser, no seu ritmo, durante todo esse período.</p></details>
-  <details><summary>Tem certificado?</summary><p>Sim. Ao concluir o curso você recebe um certificado profissional para comprovar suas habilidades.</p></details>
-  <details><summary>E se eu não gostar?</summary><p>Garantia incondicional de 7 dias. Se não ficar satisfeito por qualquer motivo, devolvemos 100% do seu investimento. Sem perguntas, sem burocracia.</p></details>
-  <details><summary>Qual software preciso ter?</summary><p>O curso foca em Pro Tools, mas os conceitos se aplicam a qualquer DAW — Logic, Ableton, Cubase, Reaper. O método é universal.</p></details>
-  <details><summary>Funciona se eu uso só plugins, sem mesa analógica?</summary><p>Sim. A maior parte do curso é "in the box" — feita 100% com plugins dentro da DAW. O módulo de mixagem híbrida mostra o diferencial analógico, mas o método e os princípios são plenamente aplicáveis se você só tem placa de áudio e plugins.</p></details>
-  <details><summary>Já fiz outro curso de mix. Vou aprender algo novo?</summary><p>A maioria dos cursos ensina o que cada plugin faz. Esse aqui ensina por que e quando aplicar, com decisões de quem está há 30 anos atrás de uma mesa de som de verdade. Mesmo aluno avançado costuma reorganizar a forma de pensar mix depois do método.</p></details>
-  <details><summary>E depois de 1 ano, eu perco o acesso?</summary><p>O acesso é de 1 ano completo, suficiente pra você assistir tudo várias vezes e voltar nos módulos no seu ritmo. Materiais que você baixar (PDFs, presets, arquivos de exemplo) ficam com você pra sempre.</p></details>
-  <details><summary>Tem suporte direto durante o curso?</summary><p>Sim. Você tem canal de tirar dúvidas com a equipe do ForestLab durante o ano de acesso, com prazo de resposta usual de até 48h úteis.</p></details>
-
+    <details><summary>Preciso ter experiência prévia?</summary><p>Não. O curso foi desenhado para levar você do zero ao avançado. Começamos pelos fundamentos e evoluímos progressivamente, sempre conectando teoria a prática real.</p></details>
+    <details><summary>Quanto tempo tenho de acesso?</summary><p>Você terá 1 ano completo de acesso a partir da inscrição. Pode assistir as aulas quantas vezes quiser, no seu ritmo, durante todo esse período.</p></details>
+    <details><summary>Tem certificado?</summary><p>Sim. Ao concluir o curso você recebe um certificado profissional para comprovar suas habilidades.</p></details>
+    <details><summary>E se eu não gostar?</summary><p>Garantia incondicional de 7 dias. Se não ficar satisfeito por qualquer motivo, devolvemos 100% do seu investimento. Sem perguntas, sem burocracia.</p></details>
+    <details><summary>Qual software preciso ter?</summary><p>O curso foca em Pro Tools, mas os conceitos se aplicam a qualquer DAW — Logic, Ableton, Cubase, Reaper. O método é universal.</p></details>
+    <details><summary>Funciona se eu uso só plugins, sem mesa analógica?</summary><p>Sim. A maior parte do curso é "in the box" — feita 100% com plugins dentro da DAW. O módulo de mixagem híbrida mostra o diferencial analógico, mas o método e os princípios são plenamente aplicáveis se você só tem placa de áudio e plugins.</p></details>
+    <details><summary>Já fiz outro curso de mix. Vou aprender algo novo?</summary><p>A maioria dos cursos ensina o que cada plugin faz. Esse aqui ensina por que e quando aplicar, com decisões de quem está há 30 anos atrás de uma mesa de som de verdade. Mesmo aluno avançado costuma reorganizar a forma de pensar mix depois do método.</p></details>
+    <details><summary>E depois de 1 ano, eu perco o acesso?</summary><p>O acesso é de 1 ano completo, suficiente pra você assistir tudo várias vezes e voltar nos módulos no seu ritmo. Materiais que você baixar (PDFs, presets, arquivos de exemplo) ficam com você pra sempre.</p></details>
+    <details><summary>Tem suporte direto durante o curso?</summary><p>Sim. Você tem canal de tirar dúvidas com a equipe do ForestLab durante o ano de acesso, com prazo de resposta usual de até 48h úteis.</p></details>
+  </div>
 </section>
 
 <p class="rodape"><b>ForestLab</b> — Engenharia de áudio para quem se recusa a soar amador.<br>© 2026 ForestLab — Todos os direitos reservados</p>
-
-</div>
 
 <script>
 // Meta Pixel: InitiateCheckout nos CTAs (manter seletor alinhado ao domínio do checkout)
