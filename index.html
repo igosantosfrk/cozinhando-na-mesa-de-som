@@ -296,6 +296,127 @@ details p{margin:12px 0 2px;font-size:15px;color:#6b7280}
 ::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:2px}
 ::selection{background:rgba(245,158,11,.25)}
 @media(max-width:520px){h1{font-size:28px}h2{font-size:22px}body{font-size:16px}}
+
+/* PREMIUM BLACK REDESIGN */
+:root{
+  --bg:#050505;
+  --bg2:#090909;
+  --surface:#101010;
+  --surface-2:#151515;
+  --border:rgba(255,255,255,.09);
+  --border-s:rgba(245,158,11,.35);
+  --text:#f5f1e8;
+  --dim:#8d8b86;
+  --green:#d7a43a;
+  --green-d:#b57916;
+  --amber:#e9b949;
+  --amber-d:#9c6512;
+}
+html{scroll-behavior:smooth;background:#050505}
+body{
+  background:
+    radial-gradient(circle at 50% -15%,rgba(218,154,38,.16),transparent 30%),
+    radial-gradient(circle at 8% 32%,rgba(170,112,16,.06),transparent 22%),
+    #050505;
+  color:var(--text);
+  font-size:17px;
+  line-height:1.75;
+  overflow-x:hidden;
+}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:20;opacity:.18;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E")}
+.wrap{max-width:1040px;padding:0 32px}
+section{position:relative;padding:96px 0}
+section.alt{background:linear-gradient(180deg,rgba(255,255,255,.018),rgba(255,255,255,.035),rgba(255,255,255,.018));border-block:1px solid rgba(255,255,255,.045)}
+section.alt::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 35%,rgba(233,185,73,.025) 50%,transparent 65%)}
+.eyebrow{font-size:11px;letter-spacing:.24em;color:#d9a93e;margin-bottom:20px;opacity:1}
+.eyebrow::before,.eyebrow::after{content:"";display:inline-block;width:28px;height:1px;background:linear-gradient(90deg,transparent,#d9a93e);vertical-align:middle;margin:0 12px 3px}
+.eyebrow::after{transform:scaleX(-1)}
+h1,h2{font-family:'Sora',sans-serif;text-wrap:balance}
+h1{font-size:clamp(42px,6vw,72px);line-height:1.03;max-width:1000px;margin:14px auto 24px;letter-spacing:-.055em;text-shadow:0 12px 45px rgba(0,0,0,.75)}
+h2{font-size:clamp(32px,4.2vw,50px);line-height:1.08;max-width:830px;margin:0 auto 24px;letter-spacing:-.045em}
+h3{font-size:19px;color:#f4efe5;letter-spacing:-.015em}
+p{color:#aaa8a2}
+p b,.sub b{color:#f3eee3}
+.sub{color:#9c9992;max-width:750px;font-size:19px;line-height:1.65}
+.destaque{background:linear-gradient(110deg,#fff1c5,#e1aa35 55%,#94600e);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+mark{background:linear-gradient(90deg,rgba(217,169,62,.12),rgba(217,169,62,.24));color:#f0c45c;border:1px solid rgba(217,169,62,.18);padding:2px 8px;border-radius:5px;-webkit-text-fill-color:#f0c45c}
+hr{border-color:rgba(255,255,255,.07)}
+
+.hero{min-height:100vh;padding:70px 0 100px;display:flex;align-items:center;background:radial-gradient(ellipse at 50% 45%,rgba(195,127,17,.1),transparent 45%)}
+.hero::before{content:"FORESTLAB  /  AUDIO ENGINEERING";position:absolute;top:24px;left:50%;transform:translateX(-50%);font:700 10px/1 'Inter',sans-serif;letter-spacing:.34em;color:rgba(255,255,255,.38);white-space:nowrap}
+.hero .wrap{max-width:1120px}
+.hero .sub{margin-bottom:32px}
+video{max-width:880px;margin:38px auto 10px;border-radius:20px;border:1px solid rgba(226,174,63,.3);box-shadow:0 35px 100px -35px #000,0 0 0 8px rgba(255,255,255,.018),0 0 70px rgba(190,122,14,.08)}
+.hero-action{max-width:520px;margin:30px auto 0;text-align:center}
+.hero-action .botao{margin-top:0}
+.hero-action small{display:block;color:#77746e;font-size:12px;letter-spacing:.04em}
+.stats{max-width:700px;background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));border-color:rgba(255,255,255,.1);border-radius:20px;padding:24px 14px;box-shadow:0 18px 50px rgba(0,0,0,.45);backdrop-filter:blur(16px)}
+.stats b{font-size:30px;color:#e5b448}
+.stats span{color:#8b8881;text-transform:uppercase;font-size:10px;letter-spacing:.08em}
+
+.botao{max-width:520px;background:linear-gradient(115deg,#f1c557,#c88a1c 48%,#f0c45c);color:#120d04;font-size:16px;padding:19px 30px;border:1px solid rgba(255,232,174,.6);border-radius:8px;box-shadow:0 12px 35px rgba(192,127,22,.28),inset 0 1px 0 rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.07em;position:relative;overflow:hidden}
+.botao::after{content:"";position:absolute;top:-70%;left:-30%;width:24%;height:240%;background:rgba(255,255,255,.25);transform:rotate(22deg);transition:left .55s ease}
+.botao:hover{transform:translateY(-3px);box-shadow:0 18px 45px rgba(192,127,22,.38)}
+.botao:hover::after{left:115%}
+.abaixo-botao{color:#74716a}
+
+.card,.modulo,.depo,.modulo-bonus{background:linear-gradient(145deg,rgba(255,255,255,.052),rgba(255,255,255,.018));border-color:rgba(255,255,255,.1);border-radius:18px;box-shadow:0 22px 50px rgba(0,0,0,.3);backdrop-filter:blur(10px)}
+.card{padding:30px;margin-bottom:18px}
+.card:hover,.modulo:hover{border-color:rgba(229,180,72,.38);transform:translateY(-2px)}
+.card,.modulo{transition:border-color .25s,transform .25s,box-shadow .25s}
+.pilar{position:relative;padding-left:92px;min-height:130px}
+.pilar .num{position:absolute;left:30px;top:30px;width:42px;height:42px;border-radius:11px;background:linear-gradient(145deg,#efc45d,#a76b0e);box-shadow:0 10px 30px rgba(184,119,16,.28);color:#0b0803}
+.grid2{gap:18px}
+.lista-check li{font-size:15px;color:#9d9a94;margin-bottom:12px}
+.lista-check.sim li::before{color:#e5b448}.lista-check.nao li::before{color:#d75e56}
+.card-sim,.card-nao{border-radius:18px;padding:28px 30px;background:linear-gradient(145deg,rgba(255,255,255,.05),rgba(255,255,255,.018));box-shadow:0 20px 45px rgba(0,0,0,.3)}
+.card-sim{border-color:rgba(226,177,67,.28)}.card-sim h3{color:#e5b448!important}
+.card-nao{border-color:rgba(255,255,255,.08)}.card-nao h3{color:#c46a62!important}
+
+.modulo{padding:28px 30px;margin-bottom:16px;position:relative;overflow:hidden}
+.modulo::after{content:"";position:absolute;right:-45px;top:-45px;width:130px;height:130px;border:1px solid rgba(229,180,72,.08);border-radius:50%}
+.modulo .tag,.modulo-bonus .tag{color:#e6b64c;background:rgba(229,180,72,.08);border-color:rgba(229,180,72,.25);letter-spacing:.13em}
+.modulo p.saida{color:#807d76;border-left:2px solid rgba(229,180,72,.45);padding-left:13px}
+.modulo li{color:#99968f}
+.modulo-bonus{border-color:rgba(229,180,72,.32);padding:30px;box-shadow:0 20px 60px rgba(190,122,14,.08)}
+
+.perfil{gap:42px;align-items:center;background:linear-gradient(145deg,rgba(255,255,255,.05),rgba(255,255,255,.015));border:1px solid rgba(255,255,255,.09);padding:34px;border-radius:22px;box-shadow:0 25px 70px rgba(0,0,0,.4)}
+.perfil img{width:230px;border-radius:16px;border:1px solid rgba(229,180,72,.3);filter:saturate(.8) contrast(1.06);box-shadow:0 20px 50px rgba(0,0,0,.55)}
+.depo{padding:24px;color:#aaa7a0;position:relative}
+.depo::before{content:"\201C";position:absolute;right:18px;top:5px;font:700 58px/1 Georgia;color:rgba(229,180,72,.12)}
+.depo .estrelas{color:#dfae41}.depo b{color:#d4cec2}
+
+.oferta{background:radial-gradient(circle at 50% 50%,rgba(209,144,29,.12),transparent 45%),linear-gradient(180deg,#080808,#050505);border-block:1px solid rgba(229,180,72,.12)}
+.caixa-preco{max-width:600px;padding:48px 44px;background:linear-gradient(150deg,#17140e,#0c0c0b 60%);border:1px solid rgba(236,191,88,.44);border-radius:22px;box-shadow:0 40px 100px rgba(0,0,0,.62),0 0 80px rgba(197,129,18,.09),inset 0 1px 0 rgba(255,255,255,.08)}
+.caixa-preco::before{content:"ACESSO PREMIUM";display:inline-block;color:#e7b84d;border:1px solid rgba(231,184,77,.28);background:rgba(231,184,77,.07);padding:5px 12px;border-radius:999px;font-size:10px;font-weight:800;letter-spacing:.18em;margin-bottom:16px}
+.caixa-preco .por{font-size:clamp(54px,8vw,76px);color:#efc65f;text-shadow:0 0 45px rgba(218,159,44,.22);letter-spacing:-.06em}
+.caixa-preco .selos{color:#7f7b73}
+.garantia{max-width:600px;background:rgba(229,180,72,.045);border-color:rgba(229,180,72,.2);padding:22px 24px}.garantia b{color:#e7bb57}
+details{background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.016));border-color:rgba(255,255,255,.09);border-radius:14px;padding:18px 20px}
+details[open]{border-color:rgba(229,180,72,.3)}
+summary::after{color:#e1af40}
+.rodape{border-top:1px solid rgba(255,255,255,.06);background:#030303;color:#4f4d49;padding:45px 20px 110px}
+.rodape b{color:#8b867d}
+.mobile-cta{display:none}
+
+@media(min-width:860px){
+  section.alt .grid2{grid-template-columns:repeat(2,1fr)}
+  .modulo{padding-left:36px}
+}
+@media(max-width:700px){
+  .wrap{padding:0 20px}
+  section{padding:68px 0}
+  .hero{padding:80px 0 72px;min-height:auto}
+  h1{font-size:37px}
+  h2{font-size:31px}
+  .sub{font-size:17px}
+  video{border-radius:12px;margin-top:28px}
+  .stats{padding:18px 6px}.stats b{font-size:22px}.stats span{font-size:9px}
+  .pilar{padding:78px 24px 24px}.pilar .num{left:24px;top:24px}
+  .perfil{padding:24px;gap:24px}.perfil img{width:100%;max-width:280px}
+  .caixa-preco{padding:36px 20px}
+  .mobile-cta{display:block;position:fixed;z-index:30;left:10px;right:10px;bottom:10px;background:linear-gradient(110deg,#efc45d,#bd7d16);color:#100b03;text-decoration:none;text-align:center;font-weight:900;font-size:13px;letter-spacing:.05em;padding:15px 18px;border-radius:8px;box-shadow:0 12px 36px rgba(0,0,0,.7),0 0 25px rgba(202,135,23,.25)}
+}
 </style>
 </head>
 <body>
@@ -310,6 +431,11 @@ details p{margin:12px 0 2px;font-size:15px;color:#6b7280}
     <video controls preload="none" poster="video/poster.jpg">
       <source src="video/vsl.mp4" type="video/mp4">
     </video>
+
+    <div class="hero-action">
+      <a class="botao" href="https://pay.kiwify.com.br/geGl5xM">QUERO DOMINAR A MIXAGEM →</a>
+      <small>Acesso imediato · 1 ano de curso · 7 dias de garantia</small>
+    </div>
 
     <div class="stats">
       <div><b>+1.000</b><span>Alunos formados</span></div>
@@ -331,7 +457,7 @@ details p{margin:12px 0 2px;font-size:15px;color:#6b7280}
 </section>
 
 <!-- PILARES -->
-<section>
+<section class="oferta" id="inscricao">
   <div class="wrap">
     <span class="eyebrow">Metodologia</span>
     <h2>Os 3 pilares do método</h2>
@@ -576,6 +702,8 @@ details p{margin:12px 0 2px;font-size:15px;color:#6b7280}
 </section>
 
 <p class="rodape"><b>ForestLab</b> — Engenharia de áudio para quem se recusa a soar amador.<br>© 2026 ForestLab — Todos os direitos reservados</p>
+
+<a class="mobile-cta" href="https://pay.kiwify.com.br/geGl5xM">QUERO ENTRAR NO CURSO →</a>
 
 <script>
 // Meta Pixel: InitiateCheckout nos CTAs (manter seletor alinhado ao domínio do checkout)
