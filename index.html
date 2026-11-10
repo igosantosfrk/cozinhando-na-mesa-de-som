@@ -477,6 +477,14 @@ details[open]{border-color:rgba(255,54,62,.32)}summary::after{color:#ff4c53}
 .botao,.mobile-cta{background:linear-gradient(115deg,#27d66b,#16a34a 55%,#15803d)!important;color:#fff!important;border-color:rgba(134,239,172,.65)!important;box-shadow:0 12px 38px rgba(22,163,74,.3),inset 0 1px 0 rgba(255,255,255,.22)!important;text-shadow:0 1px 2px rgba(0,60,20,.3)}
 .botao:hover,.mobile-cta:hover{background:linear-gradient(115deg,#4ade80,#22c55e 55%,#16a34a)!important}
 .botao:focus-visible,.mobile-cta:focus-visible{outline:3px solid #bbf7d0;outline-offset:4px}
+
+/* Benefit-led hero: readable on mobile, no floating purchase overlay. */
+.hero h1{font-size:clamp(32px,4.5vw,54px);max-width:900px;line-height:1.1;margin:14px auto 18px}
+.hero .sub{font-size:18px;line-height:1.55;max-width:690px;margin:0 auto 12px}
+.hero-credentials{text-align:center;font-size:12px;color:#b9b4b0;margin:0 auto 22px}
+.black-deal small{display:block;margin-top:12px;color:#c8c2c4;font-size:12px}
+.black-deal .black-urgency{margin-bottom:0}.black-topbar{font-size:11px}
+@media(max-width:600px){body{padding-bottom:0}.hero{padding-top:24px}.hero .eyebrow{font-size:9px;letter-spacing:.06em;line-height:1.5;margin-bottom:12px}.hero .eyebrow::before,.hero .eyebrow::after{display:none}.hero h1{font-size:30px;line-height:1.12;margin:0 auto 14px}.hero h1 br{display:none}.hero .sub{font-size:15px;line-height:1.5;margin-bottom:12px}.hero-credentials{font-size:10px;line-height:1.5;margin-bottom:18px}.black-deal{padding:17px 12px}.black-price strong{font-size:46px}.black-deal .botao{font-size:12px;padding:15px 8px}.black-deal small{font-size:10px;margin-top:10px}.black-saving{font-size:12px}.black-urgency{font-size:10px}.black-topbar{font-size:9px}}
 </style>
 </head>
 <body>
@@ -485,18 +493,17 @@ details[open]{border-color:rgba(255,54,62,.32)}summary::after{color:#ff4c53}
 <!-- HERO -->
 <section class="hero">
   <div class="wrap">
-    <span class="eyebrow">ForestLab apresenta</span>
-    <p class="black-brand">BLACK <span>FRAUDE</span></p>
-    <p class="black-kicker">O nome é provocação. O desconto é de verdade.</p>
-    <h1>Sua mix em outro nível.<br><span class="destaque">R$ 120 a menos para começar.</span></h1>
-    <p class="sub">Aprenda gravação, mixagem e masterização com Lisciel Franco no <b>Cozinhando na Mesa de Som</b>. Método de estúdio, prática real e o equipamento que você já tem.</p>
+    <span class="eyebrow">Cozinhando na Mesa de Som · com Lisciel Franco</span>
+    <h1>Sua mix soa <span class="destaque">embolada, sem peso<br>e sem definição?</span></h1>
+    <p class="sub">Aprenda com <b>Lisciel Franco</b> a equilibrar os instrumentos e dar clareza às suas mixagens <b>usando o equipamento que você já tem.</b></p>
+    <p class="hero-credentials">Mais de 30 anos de estúdio · Método aplicado em músicas reais</p>
     <div class="black-deal">
-      <span class="black-tag">CONDIÇÃO EXCLUSIVA DA CAMPANHA</span>
+      <span class="black-tag">BLACK FRAUDE · COZINHANDO NA MESA DE SOM</span>
       <p class="black-price"><del>R$ 290</del> <span>por</span> <strong>R$ 170</strong></p>
-      <p class="black-saving">R$ 120 de economia · 41% OFF</p>
-      <a class="botao" href="https://pay.kiwify.com.br/KX112yF">GARANTIR MEU ACESSO POR R$ 170 →</a>
-      <p class="black-urgency">Preço especial só durante a Black Fraude. Aproveite enquanto a campanha está no ar.</p>
-      <small>Acesso imediato · 1 ano de curso · 7 dias de garantia</small>
+      <p class="black-saving">R$ 120 de economia · Mais de 50h de aulas</p>
+      <a class="botao" href="https://pay.kiwify.com.br/KX112yF">QUERO APRENDER COM O LISCIEL →</a>
+      <small>1 ano de acesso · Acesso imediato · 7 dias de garantia</small>
+      <p class="black-urgency">Condição especial disponível somente durante a Black Fraude.</p>
     </div>
     <p class="black-watch">Conheça o curso antes de decidir ↓</p>
     <iframe class="vsl-video" src="https://www.youtube.com/embed/kSKTKtNGpSk" title="Vídeo de vendas — Cozinhando na Mesa de Som" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -770,13 +777,12 @@ details[open]{border-color:rgba(255,54,62,.32)}summary::after{color:#ff4c53}
 
 <p class="rodape"><b>ForestLab</b> — Engenharia de áudio para quem se recusa a soar amador.<br>© 2026 ForestLab — Todos os direitos reservados</p>
 
-<a class="mobile-cta" href="https://pay.kiwify.com.br/KX112yF">QUERO A BLACK FRAUDE POR R$ 170 →</a>
 
 <script>
-// Meta Pixel: InitiateCheckout nos CTAs (manter seletor alinhado ao domínio do checkout)
+// Cliques de saída são medidos separadamente do início de checkout na Kiwify.
 document.querySelectorAll('a[href*="pay.kiwify.com.br"]').forEach(function(a){
   a.addEventListener('click', function(){
-    if (window.fbq) fbq('track', 'InitiateCheckout', {value: 170, currency: 'BRL'});
+    if (window.fbq) fbq('trackCustom', 'CheckoutButtonClick', {value: 170, currency: 'BRL', content_name: 'Cozinhando na Mesa de Som - Black Fraude'});
   });
 });
 
